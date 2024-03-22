@@ -3,13 +3,12 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.firefox.service import Service as FirefoxService
 from selenium.webdriver.support import expected_conditions as EC
 import time
 from datetime import date
 import sys
 
-WAIT = 10
+WAIT = 60
 
 user = sys.argv[1]
 key = sys.argv[2]
