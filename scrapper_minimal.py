@@ -35,6 +35,6 @@ for option in options:
     
 driver = webdriver.Firefox(options=firefox_options)
 driver.implicitly_wait(WAIT)
-driver.get("https://app2.controlenamao.com.br/#!/login")
+driver.get("https://www.google.com/")
 print(driver.title)
 driver.close()
