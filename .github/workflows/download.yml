@@ -39,6 +39,7 @@ jobs:
         python3 -m pip install selenium webdriver-manager
 
     - name: Run scrapper
+      run: |
         echo "Running script"
         python3 scrapper_minimal.py ${{ secrets.APP_KEY }} ${{ secrets.APP_lOGIN}}
         echo "Checking files"
