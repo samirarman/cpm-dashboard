@@ -42,5 +42,6 @@ jobs:
       run: |
         echo "Running script"
         python3 scrapper_minimal.py ${{ secrets.APP_KEY }} ${{ secrets.APP_lOGIN}}
-        echo "Checking files"
-        ls -a -l
+
+    - name: Check downloaded files
+      run: ls -a -l
