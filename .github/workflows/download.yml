@@ -17,13 +17,20 @@ jobs:
     steps:
     - name: Check-out this repo
       uses: actions/checkout@v2
+
+    - name: Remove Chrome
+      run: sudo apt purge google-chrome-stable
+    - name: Remove default Chromium
+      run: sudo apt purge chromium-browser
+    - name: Install a new Chromium
+      run: sudo apt install -y chromium-browser
     
     - name: Prepare environment
       run: |
         echo "Checking for old files"
         ls -a -l
         echo "Installing python libraries"
-        python3 -m pip install selenium
+        python3 -m pip install selenium webdriver-manager
 
     - name: Run scrapper
       run: |
