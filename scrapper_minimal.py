@@ -25,7 +25,7 @@ def initial_date():
 def final_date():
     return date.today().strftime("%d/%m/%Y")
 
-# chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
+chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
 
 chrome_options = Options()
 options = [
@@ -41,7 +41,7 @@ for option in options:
     chrome_options.add_argument(option)
 
 print("Starting Chrome")
-driver = webdriver.Chrome(options=chrome_options)
+driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
 
 driver.implicitly_wait(WAIT)
 driver.get("https://app2.controlenamao.com.br/#!/login")
