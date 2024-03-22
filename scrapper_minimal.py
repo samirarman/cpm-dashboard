@@ -8,6 +8,7 @@ import time
 from datetime import date
 import sys
 
+print("Script starting")
 WAIT = 60
 
 user = sys.argv[1]
@@ -32,9 +33,13 @@ options = [
 ]
 for option in options:
     firefox_options.add_argument(option)
-    
+
+print("Starting Firefox")
 driver = webdriver.Firefox(options=firefox_options)
 driver.implicitly_wait(WAIT)
+
+print("Firefox started. Navigating to a page")
 driver.get("https://www.google.com/")
+
 print(driver.title)
 driver.close()
