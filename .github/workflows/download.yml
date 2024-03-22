@@ -1,1 +1,40 @@
+name: Data maker
 
+on:
+  push:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+  schedule:
+    - cron: '0 3 * * *'
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.11'
+        
+    - name: Prepare environment
+      run: |
+        echo "Checking for old files"
+        ls -a -l
+        echo "Installing firefox"
+        apt get firefox
+        echo "Checking Firefox is installed"
+        apt list
+        echo "Installing python libraries"
+        python3 -m pip install selenium webdriver-manager
+
+    - name: Run scrapper
+        echo "Running script"
+        python3 scrapper_minimal.py ${{ secrets.APP_KEY }} ${{ secrets.APP_lOGIN}}
+        echo "Checking files"
+        ls -a -l
