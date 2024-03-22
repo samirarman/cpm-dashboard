@@ -44,7 +44,7 @@ for option in options:
 print("Starting Chrome")
 driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
 
-driver.implicitly_wait(WAIT)
+driver.implicitly_wait(IMPLICT_WAIT)
 
 driver.get("https://app2.controlenamao.com.br/#!/login")
 print(driver.title)
