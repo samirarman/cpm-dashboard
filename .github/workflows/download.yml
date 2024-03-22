@@ -27,14 +27,6 @@ jobs:
       run: |
         echo "Checking for old files"
         ls -a -l
-        echo "Checking for installed packages"
-        apt list --installed
-        echo  "Removing Firefox"
-        sudo apt purge firefox
-        echo "Installing firefox"
-        sudo apt install -y firefox
-        echo "Checking Firefox is installed"
-        apt list --installed
         echo "Installing python libraries"
         python3 -m pip install selenium webdriver-manager
 
