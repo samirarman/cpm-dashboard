@@ -35,7 +35,7 @@ options = [
 for option in options:
     firefox_options.add_argument(option)
     
-with webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()), options=firefox_options) as driver:
+with webdriver.Firefox(options=firefox_options) as driver:
     driver.implicitly_wait(WAIT)
     driver.get("https://app2.controlenamao.com.br/#!/login")
     print(driver.title)
