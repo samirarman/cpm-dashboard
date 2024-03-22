@@ -17,9 +17,6 @@ jobs:
     steps:
     - name: Check-out this repo
       uses: actions/checkout@v2
-
-    - name: Setup Geckodriver
-      run: sudo apt install -y firefox-geckodriver
     
     - name: Set up Python
       uses: actions/setup-python@v2
