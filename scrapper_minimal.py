@@ -79,56 +79,56 @@ print(driver.title)
 # sales_report.click()
 
 
-options_form = driver.find_element(By.TAG_NAME, 'form')
-options_form_inputs = options_form.find_elements(By.TAG_NAME, "input")
-options_form_buttons = options_form.find_elements(By.TAG_NAME, "button")
+# options_form = driver.find_element(By.TAG_NAME, 'form')
+# options_form_inputs = options_form.find_elements(By.TAG_NAME, "input")
+# options_form_buttons = options_form.find_elements(By.TAG_NAME, "button")
 
-initial_date_field = options_form_inputs[0]
-final_date_field = options_form_inputs[3]
+# initial_date_field = options_form_inputs[0]
+# final_date_field = options_form_inputs[3]
 
-filter_button = options_form_buttons[0]
-apply_filter_button = options_form_buttons[1]
+# filter_button = options_form_buttons[0]
+# apply_filter_button = options_form_buttons[1]
 
-initial_date_field.clear()
-initial_date_field.send_keys(initial_date())
+# initial_date_field.clear()
+# initial_date_field.send_keys(initial_date())
 
-final_date_field.clear()
-final_date_field.send_keys(final_date())
+# final_date_field.clear()
+# final_date_field.send_keys(final_date())
 
-time.sleep(WAIT)
-driver.save_screenshot("2.png")
-filter_button.click()
+# time.sleep(WAIT)
+# driver.save_screenshot("2.png")
+# filter_button.click()
 
-options_container = driver.find_element(By.ID, "sidebarFiltrosRelatorioVendasElement")
+# options_container = driver.find_element(By.ID, "sidebarFiltrosRelatorioVendasElement")
 
-report_options = options_container.find_element(By.ID, "cbTipoAgrupamento_chosen")
-report_options.click()
+# report_options = options_container.find_element(By.ID, "cbTipoAgrupamento_chosen")
+# report_options.click()
 
-time.sleep(WAIT)
+# time.sleep(WAIT)
 
 
-option_text_container = options_container.find_element(By.CLASS_NAME, "chosen-search")
-option_text_input = option_text_container.find_element(By.TAG_NAME, "input")
-option_text_input.send_keys("Detalhado")
-option_text_input.send_keys(Keys.ENTER)
+# option_text_container = options_container.find_element(By.CLASS_NAME, "chosen-search")
+# option_text_input = option_text_container.find_element(By.TAG_NAME, "input")
+# option_text_input.send_keys("Detalhado")
+# option_text_input.send_keys(Keys.ENTER)
 
-time.sleep(WAIT)
-driver.save_screenshot("3.png")    
+# time.sleep(WAIT)
+# driver.save_screenshot("3.png")    
 
-arrow_button = driver.find_element(By.CLASS_NAME, "closebtn")
-arrow_button.click()
-time.sleep(WAIT)
-driver.save_screenshot("4.png")
+# arrow_button = driver.find_element(By.CLASS_NAME, "closebtn")
+# arrow_button.click()
+# time.sleep(WAIT)
+# driver.save_screenshot("4.png")
 
-apply_filter_button.click()
-time.sleep(WAIT)
+# apply_filter_button.click()
+# time.sleep(WAIT)
 
-driver.save_screenshot("5.png")
+# driver.save_screenshot("5.png")
 
-download_button = driver.find_element(By.ID, "btnExport")
-download_button.is_enabled()
-download_button.click()
+# download_button = driver.find_element(By.ID, "btnExport")
+# download_button.is_enabled()
+# download_button.click()
 
-time.sleep(120)
-driver.save_screenshot("6.png")
+# time.sleep(120)
+# driver.save_screenshot("6.png")
 driver.quit()
