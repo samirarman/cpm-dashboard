@@ -30,6 +30,11 @@ jobs:
       
     - name: Install a new Chromium
       run: sudo apt install -y chromium-browser
+
+    - name: Check Chromium present
+      run: |
+        which chromium-browser
+        which chromium
     
     - name: Prepare environment
       run: |
