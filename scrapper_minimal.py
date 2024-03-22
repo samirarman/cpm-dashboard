@@ -15,7 +15,7 @@ import sys
 
 print("Script starting")
 IMPLICIT_WAIT = 60
-ACTION_WAIT = 30
+ACTION_WAIT = 60
 
 user = sys.argv[1]
 key = sys.argv[2]
@@ -26,16 +26,6 @@ def initial_date():
 def final_date():
     return date.today().strftime("%d/%m/%Y")
 
-def highlight(element, effect_time, color, border):
-    """Highlights (blinks) a Selenium Webdriver element"""
-    driver = element._parent
-    def apply_style(s):
-        driver.execute_script("arguments[0].setAttribute('style', arguments[1]);",
-                              element, s)
-    original_style = element.get_attribute('style')
-    apply_style("border: {0}px solid {1};".format(border, color))
-    time.sleep(effect_time)
-    apply_style(original_style)
 
 chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
 
@@ -89,13 +79,6 @@ print("Acessando o relatório de vendas")
 driver.get("https://app2.controlenamao.com.br/#!/relatorio/venda")
 time.sleep(ACTION_WAIT)
 print("Acessando o menu de relatórios")
-#reports_button = driver.find_element(By.CLASS_NAME, 'relatorio-svg')
-#reports_button.click()
-#time.sleep(ACTION_WAIT)
-
-#sales_report = driver.find_element(By.PARTIAL_LINK_TEXT, 'Vendas')
-#sales_report.click()
-#time.sleep(ACTION_WAIT)
 
 options_form = driver.find_element(By.TAG_NAME, 'form')
 
@@ -105,8 +88,6 @@ print(len(options_form_inputs))
 options_form_buttons = options_form.find_elements(By.TAG_NAME, "button")
 print(len(options_form_buttons))
 
-for element in options_form_inputs:
-    highlight(element, 1, "red", 1)
 
 initial_date_field = options_form_inputs[0]
 final_date_field = options_form_inputs[3]
