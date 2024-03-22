@@ -78,7 +78,7 @@ time.sleep(WAIT)
 sales_report = driver.find_element(By.PARTIAL_LINK_TEXT, 'Vendas')
 sales_report.click()
 
-
+time.sleep(WAIT)
 options_form = driver.find_element(By.TAG_NAME, 'form')
 options_form_inputs = options_form.find_elements(By.TAG_NAME, "input")
 options_form_buttons = options_form.find_elements(By.TAG_NAME, "button")
