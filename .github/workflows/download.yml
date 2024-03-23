@@ -59,8 +59,7 @@ jobs:
         git config --local user.name "GitHub Action"
         echo "Checking for status"
         git status
-        git add *.png
-        git add *.xls
+        git add .
         echo "Checking for status after adding files"
         git status
         git commit -m "Update site"
