@@ -135,7 +135,8 @@ def setup_sales_report(driver:webdriver.Chrome):
 
     form_elements = retrive_form_elements(driver)
     fill_filter_form(form_elements)
-    form_elements["filter_button"].click() 
+    form_elements["filter_button"].click()
+    act_wait()
     
     # Fill-in sales report options
     options_container = driver.find_element(By.ID, "sidebarFiltrosRelatorioVendasElement")
@@ -173,7 +174,8 @@ def setup_inventory_report(driver:webdriver.Chrome):
     form_elements = retrive_form_elements(driver)
     fill_filter_form(form_elements)
     form_elements["filter_button"].click() 
-
+    act_wait()
+    
     options_container = driver.find_element(By.ID, 'sidebarFiltrosRelatorioEstoqueElement')
     report_options = options_container.find_element(By.ID, 'cbtipoAgrupamento_chosen')
     report_options.click()
