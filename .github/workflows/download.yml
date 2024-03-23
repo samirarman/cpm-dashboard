@@ -51,22 +51,3 @@ jobs:
     - name: Check downloaded files
       if: always()
       run: ls -a -l
-    
-    - name: Commit files
-      if: always()
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        echo "Checking for status"
-        git status
-        git add .
-        echo "Checking for status after adding files"
-        git status
-        git commit -m "Update site"
-       
-    - name: Create Pull Request
-      if: always()
-      uses: peter-evans/create-pull-request@v3
-      with:
-        title: Latest run
-        branch: update-data
