@@ -48,6 +48,8 @@ options = [
 
 if DEBUG is False:
     options.append("--headless")
+    
+print(options)
 
 for option in options:
     chrome_options.add_argument(option)
