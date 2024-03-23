@@ -49,6 +49,7 @@ jobs:
         python3 scrapper_minimal.py ${{ secrets.APP_KEY }} ${{ secrets.APP_lOGIN}} --debug
 
     - name: Check downloaded files
+      if: always
       run: ls -a -l
     
     - name: Commit files
