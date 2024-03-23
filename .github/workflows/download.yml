@@ -65,6 +65,7 @@ jobs:
         git commit -m "Update site"
        
     - name: Create Pull Request
+      if: always()
       uses: peter-evans/create-pull-request@v3
       with:
         title: Latest run
