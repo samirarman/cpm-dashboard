@@ -14,11 +14,14 @@ from datetime import date
 import sys
 
 print("Script starting")
-IMPLICIT_WAIT = 60
-ACTION_WAIT = 60
+IMPLICIT_WAIT = 120
+ACTION_WAIT = 20
 
 user = sys.argv[1]
 key = sys.argv[2]
+
+if "--debug" in sys.argv:
+    DEBUG = True
 
 def initial_date():
     return "01/03/2024"
@@ -41,7 +44,7 @@ options = [
     "--remote-debugging-pipe",
 ]
 
-if "--debug" not in sys.argv:
+if not DEBUG:
     options.append("--headless")
 
 for option in options:
@@ -79,6 +82,9 @@ print("Acessando o relatório de vendas")
 driver.get("https://app2.controlenamao.com.br/#!/relatorio/venda")
 time.sleep(ACTION_WAIT)
 print("Acessando o menu de relatórios")
+
+if DEBUG:
+    driver.save_screenshot("sales_page.png")
 
 options_form = driver.find_element(By.TAG_NAME, 'form')
 

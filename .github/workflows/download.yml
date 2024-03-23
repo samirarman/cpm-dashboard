@@ -46,7 +46,29 @@ jobs:
     - name: Run scrapper
       run: |
         echo "Running script"
-        python3 scrapper_minimal.py ${{ secrets.APP_KEY }} ${{ secrets.APP_lOGIN}}
+        python3 scrapper_minimal.py ${{ secrets.APP_KEY }} ${{ secrets.APP_lOGIN}} --debug
 
     - name: Check downloaded files
       run: ls -a -l
+
+    - name: Push files
+      uses: git
+    
+    - name: Commit files
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        echo "Checking for status"
+        git status
+        git add sales.csv
+        git add inventory.csv
+        echo "Checking for status after adding files"
+        git status
+        git commit -m "Update site"
+       
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        branch:  'main'
+        force:  true 
+        github_token: ${{ secrets.GITHUB_TOKEN }}
