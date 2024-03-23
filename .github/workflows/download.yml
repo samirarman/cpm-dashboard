@@ -65,6 +65,7 @@ jobs:
         git commit -m "Update site"
        
     - name: Push changes
+      if: always()
       uses: ad-m/github-push-action@master
       with:
         branch: 'main'
