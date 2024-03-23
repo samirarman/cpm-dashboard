@@ -55,6 +55,8 @@ driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
 
 driver.implicitly_wait(IMPLICIT_WAIT)
 
+time.sleep(ACTION_WAIT)
+
 driver.get("https://app2.controlenamao.com.br/#!/login")
 print(driver.title)
 
