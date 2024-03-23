@@ -37,6 +37,7 @@ chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).in
 chrome_options = Options()
 
 options = [
+    "--headless",
     "--disable-gpu",
     "--window-size=2560,1920",
     "--ignore-certificate-errors",
@@ -45,11 +46,6 @@ options = [
     "--disable-dev-shm-usage",
     "--remote-debugging-pipe",
 ]
-
-if DEBUG is False:
-    options.append("--headless")
-    
-print(options)
 
 for option in options:
     chrome_options.add_argument(option)
