@@ -53,6 +53,7 @@ jobs:
       run: ls -a -l
     
     - name: Commit files
+      if: always()
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
