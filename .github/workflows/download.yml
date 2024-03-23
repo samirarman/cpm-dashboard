@@ -64,10 +64,8 @@ jobs:
         git status
         git commit -m "Update site"
        
-    - name: Push changes
-      if: always()
-      uses: ad-m/github-push-action@master
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v3
       with:
-        branch: 'main'
-        force:  true 
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        title: Latest run
+        branch: update-data
