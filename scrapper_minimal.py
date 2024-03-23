@@ -22,6 +22,8 @@ key = sys.argv[2]
 
 if "--debug" in sys.argv:
     DEBUG = True
+else:
+    DEBUG = False
 
 def initial_date():
     return "01/03/2024"
@@ -44,7 +46,7 @@ options = [
     "--remote-debugging-pipe",
 ]
 
-if not DEBUG:
+if DEBUG is False:
     options.append("--headless")
 
 for option in options:
