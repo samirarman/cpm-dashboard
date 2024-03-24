@@ -46,7 +46,7 @@ jobs:
     - name: Run scrapper
       run: |
         echo "Running script"
-        python3 scrapper_minimal.py ${{ secrets.APP_USER }} ${{ secrets.APP_PASS}} --debug
+        python3 scrapper.py ${{ secrets.APP_USER }} ${{ secrets.APP_PASS}} --debug
 
     - name: Check downloaded files
       if: always()
