@@ -1,0 +1,25 @@
+name: Data maker
+
+on:
+  push:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+jobs:
+  bozo:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Create artifact
+      run: |
+        echo "The quick brown fox jumps over the lazy dog" > lala.txt
+        cat lala.txt
+        ls -a -l
+
+    - name: Make artifact
+      uses: actions/upload-artifact@v4.3.1
+      with:
+        name: lala
+        path: lala.txt
