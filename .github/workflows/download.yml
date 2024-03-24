@@ -51,3 +51,10 @@ jobs:
     - name: Check downloaded files
       if: always()
       run: ls -a -l
+
+    - name: Upload reports
+      uses: actions/upload-artifact@v4
+      with:
+        name: reports
+        path: *.xls
+        retention: 2
