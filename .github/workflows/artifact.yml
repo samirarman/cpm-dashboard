@@ -24,4 +24,4 @@ jobs:
       uses: actions/upload-artifact@v4.3.1
       with:
         name: lala
-        path: *.txt
+        path: '*.txt'
