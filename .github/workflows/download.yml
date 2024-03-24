@@ -57,3 +57,10 @@ jobs:
        cp Relatorio_venda.xls Relatorio_$(date '+%Y_%m').xls
        cp Relatorio_Estoque.xls Relatorio_Estoque_$(date '+%Y%m').xls
        ls -a -l
+
+    - name: Create artifact
+      uses: actions/upload-artifact@v4.3.1
+      with:
+        name: Reports
+        path: '*.xls'
+        retention-days: 7
