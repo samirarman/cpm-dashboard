@@ -41,7 +41,7 @@ jobs:
         echo "Checking for old files"
         ls -a -l
         echo "Installing python libraries"
-        python3 -m pip install selenium webdriver-manager
+        python3 -m pip install selenium webdriver-manager dropbox pathlib
 
     - name: Run scrapper
       run: |
@@ -54,8 +54,8 @@ jobs:
 
     - name: Rename files
       run: |
-       cp Relatorio_venda.xls Relatorio_$(date '+%Y_%m').xls
-       cp Relatorio_Estoque.xls Relatorio_Estoque_$(date '+%Y%m').xls
+       mv Relatorio_venda.xls Relatorio_$(date '+%Y_%m').xls
+       mv Relatorio_Estoque.xls Relatorio_Estoque_$(date '+%Y%m').xls
        ls -a -l
 
     - name: Create artifact
@@ -64,3 +64,39 @@ jobs:
         name: Reports
         path: '*.xls'
         retention-days: 7
+
+    - name: Upload reports
+      run: python3 upload_files.py ${{ secrets.DBX_APP_KEY }} ${{ secrets.DBX_APP_SECRET}} ${{ secrets.DBX_REFRESH_TOKEN }}
+
+    - name: Download all data
+      run: |
+        python3 download_files.py ${{ secrets.DBX_APP_KEY }} ${{ secrets.DBX_APP_SECRET}} ${{ secrets.DBX_REFRESH_TOKEN }}
+        ls -a -l
+
+    - name: Prepare data
+      run: |
+        ls -a -l
+        python3 data_joiner.py
+        
+    - name: Check produced files
+      run: |
+        ls -a -l
+        
+    - name: Commit files
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        echo "Checking for status"
+        git status
+        git add sales.csv
+        git add inventory.csv
+        echo "Checking for status after adding files"
+        git status
+        git commit -m "Update data"
+       
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        branch:  'main'
+        force:  true 
+        github_token: ${{ secrets.GITHUB_TOKEN }}
