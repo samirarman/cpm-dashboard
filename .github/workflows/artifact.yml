@@ -1,4 +1,4 @@
-name: Data maker
+name: Bozifier
 
 on:
   push:
@@ -16,10 +16,12 @@ jobs:
       run: |
         echo "The quick brown fox jumps over the lazy dog" > lala.txt
         cat lala.txt
+        echo "lala lele lili lolo lulu" > bozo.txt
+        cat bozo.txt
         ls -a -l
 
     - name: Make artifact
       uses: actions/upload-artifact@v4.3.1
       with:
         name: lala
-        path: lala.txt
+        path: *.txt
