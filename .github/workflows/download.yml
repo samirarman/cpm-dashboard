@@ -11,7 +11,7 @@ on:
     - cron: '30 22 * * *'
   
 jobs:
-  build:
+  scrape:
     runs-on: ubuntu-latest
 
     steps:
@@ -52,9 +52,8 @@ jobs:
       if: always()
       run: ls -a -l
 
-    - name: Upload reports
-      uses: actions/upload-artifact@v4
-      with:
-        name: reports
-        path: /*.xls
-        retention: 2
+    - name: Rename files
+      run: |
+       cp Relatorio_venda.xls Relatorio_$(date '+%Y_%m').xls
+       cp Relatorio_Estoque.xls Relatorio_Estoque_$(date '+%Y%m').xls
+       ls -a -l
