@@ -1,7 +1,7 @@
 import pandas as pd 
 from glob import glob
 
-cat = pd.read_excel("cat.xls")
+cat = pd.read_csv("cat.csv")
 sales_reports = glob("/Users/samir/Pastas sincronizadas/Dropbox/Projeto GoCoffee/Financeiro/Relatórios do Sistema/Relatórios de Venda/Relatorio_*.xls", recursive=True)
 if len(sales_reports) == 0:
     sales_reports = glob("./Relatórios de Venda/*.xls")
