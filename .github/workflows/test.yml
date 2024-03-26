@@ -12,11 +12,13 @@ jobs:
 
     steps:
     - name: Test2
+      if: always()
       run: |
         dpkg -l chromium-browser
         dpkg -l python3
         
     - name: Test
+      if: always()
       run: |
         apt list --all-versions python3 chrome
         apt list --all-versions chromium-browser
