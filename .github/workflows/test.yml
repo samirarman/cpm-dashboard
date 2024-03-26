@@ -12,4 +12,4 @@ jobs:
 
     steps:
     - name: Test
-      run: apt-list --all-versions python3 chrome
+      run: apt list --all-versions python3 chrome
