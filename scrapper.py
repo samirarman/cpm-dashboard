@@ -40,7 +40,7 @@ def final_date():
 
 def setup_driver():
 
-    chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
+    chrome_service = Service()#ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
     chrome_options = Options()
 
     options = [
