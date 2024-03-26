@@ -76,6 +76,8 @@ jobs:
     - name: Prepare data
       run: |
         ls -a -l
+        unzip Vendas.zip
+        unzip EstoqueDetalhado.zip
         python3 data_joiner.py
         
     - name: Check produced files
