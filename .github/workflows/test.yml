@@ -20,5 +20,5 @@ jobs:
     - name: Test
       if: always()
       run: |
-        apt list --all-versions python3 chrome
+        apt list --all-versions python3 chromium-browser chrome selenium
         apt list --all-versions chromium-browser
