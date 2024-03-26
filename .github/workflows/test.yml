@@ -14,4 +14,7 @@ jobs:
     - name: Test
       run: apt list --all-versions python3 chrome
     - name: Test2
-      run: dpkg -l chromium
+      run: |
+        dpkg -l chromium
+        dpkg -l python3
+      
