@@ -13,9 +13,15 @@ jobs:
     steps:
     - name: Test2
       if: always()
-      run: |
-        dpkg -l chromium-browser
-        dpkg -l python3
+      run: which chrome
+
+    - name: Test3
+      if: always()
+      run: which chromium-browser
+
+    - name: Test4
+      if: always()
+      run: which chromium
         
     - name: Test
       if: always()
