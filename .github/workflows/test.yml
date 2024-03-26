@@ -1,1 +1,15 @@
-workflow: Test
+name: Data maker
+
+on:
+
+  workflow_dispatch:
+
+  
+  
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Test
+      run: apt-list --all-versions python3 chrome
