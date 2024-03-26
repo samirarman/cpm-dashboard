@@ -8,8 +8,10 @@ on:
   
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
     - name: Test
       run: apt list --all-versions python3 chrome
+    - name: Test2
+      run: dpkg -l chromium
