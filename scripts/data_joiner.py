@@ -24,6 +24,7 @@ def read_sales_data(filename):
     df["Data"] = pd.to_datetime(df["Data Venda"].dt.date)
     df["Hora"] = df["Data Venda"].dt.time
     df["Ano"] = df['Data Venda'].dt.strftime("%Y")
+    df['Mês'] = df['Data Venda'].dt.strftime("%m")
     df["Ano Mês"] = df["Data Venda"].dt.strftime('%Y-%m')
     df["Faixa Horária"] = df["Data Venda"].dt.hour
     df['Semana'] = df['Data Venda'].dt.isocalendar().week
