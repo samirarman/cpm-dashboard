@@ -197,7 +197,7 @@ kpi_tab.subheader("Revenue")
 kpi_tab.line_chart(data.groupby('Data')['Total'].sum().reset_index().rename(columns={"Total":"Receita"}), x='Data', y='Receita')
 kpi_tab.bar_chart(data.groupby(['Ano Mês'])['Total'].sum().reset_index().rename(columns={"Total":"Receita"}), x='Ano Mês', y='Receita')
 kpi_tab.line_chart(data.groupby(['Ano', 'Semana'])['Total'].sum().reset_index().rename(columns={"Total":"Receita"}), x='Semana', y='Receita', color='Ano')
-kpi_tab.line_chart(data.groupby(['Ano', 'Mês'])['Total'].sum().reset_index().rename(columns={"Total":"Receita"}), x='Mês', y='Receita', color='Ano')
+# kpi_tab.line_chart(data.groupby(['Ano', 'Mês'])['Total'].sum().reset_index().rename(columns={"Total":"Receita"}), x='Mês', y='Receita', color='Ano')
 kpi_tab.subheader('Quantidade de produtos por pedido')
 kpi_tab.line_chart(share, y='Percentage', x='Ano Mês', color='Quantidade_x')
 
