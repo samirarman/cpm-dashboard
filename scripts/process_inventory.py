@@ -11,7 +11,7 @@ consumption = df[(df['Entrada/Saída'] == 'Saída') & (df['Tipo'] == 'Saída')]
 consumption = consumption.groupby(['Ano', 'Data', 'Produto'])['Quantidade'].sum().reset_index()
 print(consumption)
 
-demand = daily_consumption.groupby('Produto')['Quantidade'].agg(lambda x : 0.7 * x.tail(30).mean() + 0.3 * x.tail(120).mean()).reset_index()
+demand = consumption.groupby('Produto')['Quantidade'].agg(lambda x : 0.7 * x.tail(30).mean() + 0.3 * x.tail(120).mean()).reset_index()
 demand.rename(columns={'Quantidade':'Demanda'}, inplace=True)
 print(demand)
 

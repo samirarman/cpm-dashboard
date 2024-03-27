@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 from glob import glob
 import datetime as datetime
+import numpy as np
 import sqlite3
 
 ##########
@@ -261,16 +262,30 @@ material_tab.line_chart(avg_material_data, x='year_month', y='avg_cost')
 #####################
 # INVENTORY TAB
 #####################
-# prod_data = pd.read_csv("../prod_data.csv")
+prod_data = pd.read_csv("aux_data/prod_data.csv")
 # moves = pd.read_csv("../moves.csv")
 inventory_tab.subheader("Materials levels")
 inv_demand = pd.read_csv("data/inventory_demand.csv")
+inventory = inv_demand.merge(prod_data, on="Produto", how="left")
+
 datasets_tab.write(inv_demand)
+datasets_tab.write(prod_data)
+inventory = inventory[inventory["Descontinuado"] == "Não"]
+inventory['Estoque alvo'] = -inventory["Demanda"] * (inventory["Período"] + inventory["Lead"]) + -inventory["Demanda"] * inventory["Segurança"]
+inventory["Necessidade"] = inventory["Estoque alvo"] - inventory["Saldo"]
+inventory.loc[inventory["Necessidade"] <= 0, "Necessidade"] = 0
+inventory["Pedido"] = np.ceil(inventory["Necessidade"]/inventory["Embalagem"])
+inventory["Custo"] = inventory["Pedido"] * inventory["Preço"]
+datasets_tab.write(inventory)
 
-inventory_tab.write(inv_demand)
-# inventory_tab.subheader("Orders")
-# inventory_tab.write(prod_data[prod_data['Ação'] != 'Nenhuma'].groupby(['Lista', 'Produto'])['Demanda'].sum())
+inventory_tab.subheader("Níveis")
+inventory_tab.dataframe(data=inventory[inventory["Pedido"] > 0][['Produto', 'Saldo']])
 
+inventory_tab.subheader("Pedidos")
+inventory_tab.dataframe(data=inventory[inventory["Pedido"] > 0].groupby(['Lista', 'Produto'])[['Pedido', 'Custo']].sum().reset_index().style.format({"Custo": "${:,}"}),)
+
+inventory_tab.subheader("Valor do pedido de cada lista")
+inventory_tab.dataframe(data=inventory[inventory["Pedido"] > 0].groupby(['Lista'])['Custo'].sum().reset_index().style.format({"Custo": "${:,}"}),)
 # inventory_tab.subheader("Discrepâncias nas fichas técnicas")
 # inventory_tab.write(moves[['Produto', 'Ajuste %']].sort_values('Ajuste %'))
 
