@@ -46,7 +46,7 @@ def read_inventory_data(filename):
 
 new_data = pd.concat([read_sales_data(file) for file in sales_reports]).drop_duplicates()
 sales_data = new_data.merge(cat, on='Produto', how='left')
-sales_data.to_csv("./data/sales.csv", index=False)
+sales_data.to_csv("data/sales.csv", index=False)
 
 inventory_data = pd.concat([read_inventory_data(file) for file in inventory_reports])
-inventory_data.to_csv("../data/inventory.csv", index=False)
+inventory_data.to_csv("/data/inventory.csv", index=False)
