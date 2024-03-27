@@ -1,7 +1,7 @@
 import pandas as pd 
 from glob import glob
 
-cat = pd.read_csv("cat.csv")
+cat = pd.read_csv("aux_data/cat.csv")
 sales_reports = glob("/Users/samir/Pastas sincronizadas/Dropbox/Projeto GoCoffee/Financeiro/Relatórios do Sistema/Relatórios de Venda/Relatorio_*.xls", recursive=True)
 if len(sales_reports) == 0:
     sales_reports = glob("./Relatórios de Venda/*.xls")
@@ -46,7 +46,7 @@ def read_inventory_data(filename):
 
 new_data = pd.concat([read_sales_data(file) for file in sales_reports]).drop_duplicates()
 sales_data = new_data.merge(cat, on='Produto', how='left')
-sales_data.to_csv("sales.csv", index=False)
+sales_data.to_csv("./data/sales.csv", index=False)
 
 inventory_data = pd.concat([read_inventory_data(file) for file in inventory_reports])
 inventory_data.to_csv("../data/inventory.csv", index=False)
