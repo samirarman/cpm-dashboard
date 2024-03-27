@@ -18,69 +18,11 @@ kpi_tab, cogs_tab, material_tab, datasets_tab, inventory_tab = st.tabs(["KPI", "
 # DATA PREPARATION
 ##########
 cat = pd.read_csv("aux_data/cat.csv")
-# reports = glob("/Users/samir/Pastas sincronizadas/Dropbox/Projeto GoCoffee/Financeiro/Relatórios do Sistema/Relatórios de Venda/Relatorio_*.xls", recursive=True)
-# reports = glob("/Users/samir/Library/CloudStorage/Dropbox/Projeto GoCoffee/Financeiro/Relatórios do Sistema/Relatórios de Venda/Relatorio_*.xls", recursive=True)
-# delivery_reports = glob("/Users/samir/Pastas sincronizadas/Dropbox/Projeto GoCoffee/Financeiro/Relatórios do Sistema/Relatórios de Delivery/Relatorio_*.xls", recursive=True)
-# delivery_reports = glob("/Users/samir/Library/CloudStorage/DDropbox/Projeto GoCoffee/Financeiro/Relatórios do Sistema/Relatórios de Delivery/Relatorio_*.xls", recursive=True)
-
-# @st.cache_data
-# def read_data(filename):
-#     print("Processing:", filename)
-#     df = pd.read_excel(filename, skiprows=3, usecols=[0,2,3,4,9,12,13])
-#     df.drop(df.tail(1).index, inplace = True)
-#     df.rename(columns={"Vl.Unit.":"Valor Unit", "Valor Total Produtos - Descontos": "Total"}, inplace=True)
-#     df["Data Venda"] = pd.to_datetime(df["Data Venda"],format='%d/%m/%Y %H:%M', dayfirst=True)
-#     df["Data"] = pd.to_datetime(df["Data Venda"].dt.date)
-#     df["Hora"] = df["Data Venda"].dt.time
-#     df["Ano"] = df['Data Venda'].dt.strftime("%Y")
-#     df['Mês'] = df['Data Venda'].dt.strftime("%m")
-#     df["Ano Mês"] = df["Data Venda"].dt.strftime('%Y-%m')
-#     df["Faixa Horária"] = df["Data Venda"].dt.hour
-#     df["Dia da Semana"] = df["Data Venda"].dt.weekday
-#     df["Hora Decimal"] = df["Data Venda"].dt.hour + df["Data Venda"].dt.minute / 60
-#     df['Semana'] = df['Data Venda'].dt.isocalendar().week
-#     df["Período"] = "1 - Manhã"
-#     df.loc[df["Data Venda"].dt.hour >= 11, ["Período"]] = "2 - Almoço"
-#     df.loc[df["Data Venda"].dt.hour >= 14, ["Período"]] = "3 - Tarde"
-#     df.loc[df["Data Venda"].dt.hour >= 18, ["Período"]] = "4 - Noite"
-#     return df
-
-# @st.cache_data
-# def read_delivery_data(filename):
-#     print("Processing ", filename)
-#     df = pd.read_excel(filename, skiprows=3, usecols=[10,12])
-#     df.drop(df.tail(1).index, inplace=True)
-#     df.rename(columns={"Numero Venda":"Número venda"}, inplace=True)
-#     return df
-
-# new_data = pd.read_csv("https://raw.githubusercontent.com/samirarman/gcm-data-center/main/sales.csv?token=GHSAT0AAAAAACP6YXXJB6IX454ERXJK6UDMZQDIVLQ")#pd.concat([read_data(file) for file in reports])
-# data = new_data
 data = pd.read_csv("data/sales.csv")
-# data = new_data.merge(cat, on='Produto', how='left')
-# delivery = pd.concat([read_delivery_data(file) for file in delivery_reports])
-# data = data.merge(delivery, on='Número venda', how='left')
-# data['Plataforma'].fillna("Presencial", inplace=True)
-# data['Frappe do dia'] = False
-# data.loc[data['Produto'] == 'FRAPPE DO DIA - P', 'Frappe do dia'] = True
-# data.loc[(data['Produto'] == 'FRAPPE DO DIA - P') & (data['Dia da Semana'] == 1), 'Produto'] = 'FRAPPE VANILLA MACCHIATO - P'
-# data.loc[(data['Produto'] == 'FRAPPE DO DIA - P') & (data['Dia da Semana'] == 2), 'Produto'] = 'FRAPPE CAPPUCCINO - P'
-# data.loc[(data['Produto'] == 'FRAPPE DO DIA - P') & (data['Dia da Semana'] == 3), 'Produto'] = 'FRAPPE BANOFFEE - P'
-# data.loc[(data['Produto'] == 'FRAPPE DO DIA - P') & (data['Dia da Semana'] == 4), 'Produto'] = 'FRAPPE RED - P'
-# data.loc[(data['Produto'] == 'FRAPPE DO DIA - P') & (data['Dia da Semana'] == 5), 'Produto'] = 'FRAPPE CARAMEL - P'
 datasets_tab.subheader("Sales Data")
 datasets_tab.write(data)
 
 montly_revenue = data.groupby(['Ano Mês'])['Total'].sum().reset_index()
-# monthly_delivery_revenue = data[data['Plataforma'] != "Presencial"].groupby(['Ano Mês'])['Total'].sum().reset_index()
-# monthly_delivery_revenue['Share'] = monthly_delivery_revenue['Total']/montly_revenue['Total'] * 100
-# datasets_tab.subheader("Monthly delivery revenue")
-# datasets_tab.write(monthly_delivery_revenue)
-
-# monthly_delivery_by_platform = data[data['Plataforma'] != 'Presencial'].groupby(['Ano Mês', 'Plataforma'])['Total'].sum().reset_index()
-# datasets_tab.subheader("Delivery by platform")
-# datasets_tab.write(monthly_delivery_by_platform.merge(monthly_delivery_revenue, on='Ano Mês', how='left'))
-
-# delivery_share = (100*data.groupby(['Ano Mês', 'Plataforma'])['Total'].sum()/data.groupby([ 'Ano Mês'])['Total'].sum()).reset_index()
 
 datasets_tab.subheader("Got no idea what this is")
 datasets_tab.write(data.groupby('Ano Mês')['Total'].count().reset_index())
@@ -121,12 +63,14 @@ datasets_tab.write(ldm)
 # purchases['date'] = pd.to_datetime(purchases['date'])
 # purchases['year_month'] = purchases['date'].dt.strftime('%Y-%m')
 purchases = pd.read_csv("aux_data/purchases.csv")
+datasets_tab.subheader("Purchases")
 datasets_tab.write(purchases)
 
 avg_cost = purchases.groupby(['year_month','material'])[['total', 'qty']].sum().reset_index()
 avg_cost['avg_cost'] = avg_cost['total']/avg_cost['qty']
 materials = ldm['material_id'].unique()
 
+@st.cache_data
 def fill_avg_costs(material):
     a = avg_cost[avg_cost['material'] == material]
     lh = purchases['year_month'].drop_duplicates().reset_index().sort_values(by='year_month')
@@ -151,6 +95,7 @@ def calculate_cogs(product):
   
     if len(materials) != 0:
         for material in materials:
+            
             unit_qty = ldm[(ldm['product_id'] == product) & (ldm['material_id'] == material)].tail(1).reset_index().loc[0,'qty']
             new_df = pd.DataFrame()
             new_df['year_month'] = avg_cost['year_month'].unique()
@@ -165,6 +110,7 @@ def calculate_cogs(product):
 
 datasets_tab.subheader('Material cost for recipe')    
 material_usage = pd.concat([calculate_cogs(product) for product in products])
+datasets_tab.subheader("Materials usage")
 datasets_tab.write(material_usage)
 product_cost = material_usage.groupby(['product', 'year_month'])['material_cost'].sum().reset_index()
 datasets_tab.subheader('Product cost evolution')
@@ -193,11 +139,17 @@ datasets_tab.write(qty_sold)
 # KPI TAB
 #####################
 
-kpi_tab.subheader("Revenue")
+kpi_tab.subheader("Receita")
 kpi_tab.line_chart(data.groupby('Data')['Total'].sum().reset_index().rename(columns={"Total":"Receita"}), x='Data', y='Receita')
 kpi_tab.bar_chart(data.groupby(['Ano Mês'])['Total'].sum().reset_index().rename(columns={"Total":"Receita"}), x='Ano Mês', y='Receita')
 kpi_tab.line_chart(data.groupby(['Ano', 'Semana'])['Total'].sum().reset_index().rename(columns={"Total":"Receita"}), x='Semana', y='Receita', color='Ano')
+
+kpi_tab.subheader("Número de pedidos")
+kpi_tab.line_chart(data.groupby('Data')['Número venda'].nunique().reset_index().rename(columns={"Número venda":"Pedidos"}), x='Data', y='Pedidos')
+kpi_tab.bar_chart(data.groupby('Ano Mês')['Número venda'].nunique().reset_index().rename(columns={"Número venda":"Pedidos"}), x='Ano Mês', y='Pedidos')
+kpi_tab.line_chart(data.groupby(['Ano', 'Semana'])['Número venda'].nunique().reset_index().rename(columns={"Número venda":"Pedidos"}), x='Semana', y='Pedidos', color='Ano')
 # kpi_tab.line_chart(data.groupby(['Ano', 'Mês'])['Total'].sum().reset_index().rename(columns={"Total":"Receita"}), x='Mês', y='Receita', color='Ano')
+
 kpi_tab.subheader('Quantidade de produtos por pedido')
 kpi_tab.line_chart(share, y='Percentage', x='Ano Mês', color='Quantidade_x')
 
