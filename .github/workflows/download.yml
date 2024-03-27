@@ -41,12 +41,12 @@ jobs:
         echo "Checking for old files"
         ls -a -l
         echo "Installing python libraries"
-        python3 -m pip install selenium webdriver-manager dropbox pathlib pandas xlrd
+        python3 -m pip install selenium webdriver-manager dropbox pathlib pandas xlrd glob
 
     - name: Run scrapper
       run: |
         echo "Running script"
-        python3 scrapper.py ${{ secrets.APP_USER }} ${{ secrets.APP_PASS}} --debug
+        python3 scripts/scrapper.py ${{ secrets.APP_USER }} ${{ secrets.APP_PASS}} --debug
 
     - name: Check downloaded files
       if: always()
@@ -66,11 +66,11 @@ jobs:
         retention-days: 7
 
     - name: Upload reports
-      run: python3 upload_files.py ${{ secrets.DBX_APP_KEY }} ${{ secrets.DBX_APP_SECRET}} ${{ secrets.DBX_REFRESH_TOKEN }}
+      run: python3 scripts/upload_files.py ${{ secrets.DBX_APP_KEY }} ${{ secrets.DBX_APP_SECRET}} ${{ secrets.DBX_REFRESH_TOKEN }}
 
     - name: Download all data
       run: |
-        python3 download_files.py ${{ secrets.DBX_APP_KEY }} ${{ secrets.DBX_APP_SECRET}} ${{ secrets.DBX_REFRESH_TOKEN }}
+        python3 scripts/download_files.py ${{ secrets.DBX_APP_KEY }} ${{ secrets.DBX_APP_SECRET}} ${{ secrets.DBX_REFRESH_TOKEN }}
         ls -a -l
 
     - name: Prepare data
@@ -78,7 +78,7 @@ jobs:
         ls -a -l
         unzip Vendas.zip
         unzip EstoqueDetalhado.zip
-        python3 data_joiner.py
+        python3 scripts/data_joiner.py
         
     - name: Check produced files
       run: |
@@ -90,8 +90,9 @@ jobs:
         git config --local user.name "GitHub Action"
         echo "Checking for status"
         git status
-        git add sales.csv
-        git add inventory.csv
+        git add data/sales.csv
+        git add data/inventory.csv
+        git add data/inventory_demand.csv
         echo "Checking for status after adding files"
         git status
         git commit -m "Update data"

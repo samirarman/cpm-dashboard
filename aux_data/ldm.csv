@@ -1,0 +1,526 @@
+product_id,material_id,qty
+AGUA COM GAS,Copo descartável plástico,1.0
+AGUA COM GAS,Canudo grosso,0.2
+AGUA COM GAS,Água com gás,500.0
+AGUA SEM GAS,Copo descartável plástico,1.0
+AGUA SEM GAS,Canudo grosso,0.2
+AGUA SEM GAS,Água sem gás,500.0
+AMERICANO - M,Café em grão,18.0
+AMERICANO - M,Açúcar,0.42
+AMERICANO - M,Adoçante sucralose,0.18
+AMERICANO - M,Copo papel M,1.0
+AMERICANO - M,Tampa preta M,1.0
+AMERICANO - M,Luva para copo,1.0
+AMERICANO - M,Água mineral,100.0
+AMERICANO - M,Mexedor de madeira,0.6
+AMERICANO ICE  - G,Café em grão,18.0
+AMERICANO ICE  - G,Copo plástico G,1.0
+AMERICANO ICE  - G,Tampa reta plástica,1.0
+AMERICANO ICE  - G,Canudo grosso,1.0
+BROWNIE,Saco para salgados,1.0
+BROWNIE,Guardanapo,1.0
+BROWNIE,Brownie,1.0
+CAFE CARMELOTTO - G,Café em grão,18.0
+CAFE CARMELOTTO - G,Leite integral,352.8
+CAFE CARMELOTTO - G,Leite de aveia,3.6
+CAFE CARMELOTTO - G,Leite sem lactose,3.6
+CAFE CARMELOTTO - G,Copo papel G,1.0
+CAFE CARMELOTTO - G,Tampa preta G,1.0
+CAFE CARMELOTTO - G,Luva para copo,1.0
+CAFE CARMELOTTO - G,Xarope caramel,24.0
+CAFE CARMELOTTO - G,Cobertura caramelo,15.0
+CAFE CARMELOTTO - M,Café em grão,13.0
+CAFE CARMELOTTO - M,Copo papel M,1.0
+CAFE CARMELOTTO - M,Tampa preta M,1.0
+CAFE CARMELOTTO - M,Luva para copo,1.0
+CAFE CARMELOTTO - M,Leite integral,242.06
+CAFE CARMELOTTO - M,Leite de aveia,2.47
+CAFE CARMELOTTO - M,Leite de soja,2.47
+CAFE CARMELOTTO - M,Xarope caramel,16.0
+CAFE CARMELOTTO - M,Cobertura caramelo,15.0
+CAFE LATTE -  G,Café em grão,18.0
+CAFE LATTE -  G,Açúcar,0.7
+CAFE LATTE -  G,Adoçante sucralose,0.3
+CAFE LATTE -  G,Leite integral,352.8
+CAFE LATTE -  G,Leite de aveia,3.6
+CAFE LATTE -  G,Leite sem lactose,3.6
+CAFE LATTE -  G,Copo papel G,1.0
+CAFE LATTE -  G,Tampa preta G,1.0
+CAFE LATTE -  G,Luva para copo,1.0
+CAFE LATTE -  G,Mexedor de madeira,1.0
+CAFE LATTE -  M,Café em grão,13.0
+CAFE LATTE -  M,Açúcar,0.7
+CAFE LATTE -  M,Adoçante sucralose,0.3
+CAFE LATTE -  M,Copo papel M,1.0
+CAFE LATTE -  M,Tampa preta M,1.0
+CAFE LATTE -  M,Luva para copo,1.0
+CAFE LATTE -  M,Leite integral,242.06
+CAFE LATTE -  M,Leite de aveia,2.47
+CAFE LATTE -  M,Leite de soja,2.47
+CAFE LATTE -  M,Mexedor de madeira,1.0
+CAFE MOCHA - G,Café em grão,18.0
+CAFE MOCHA - G,Açúcar,0.35
+CAFE MOCHA - G,Adoçante sucralose,0.15
+CAFE MOCHA - G,Leite integral,352.8
+CAFE MOCHA - G,Leite de aveia,3.6
+CAFE MOCHA - G,Leite sem lactose,3.6
+CAFE MOCHA - G,Copo papel G,1.0
+CAFE MOCHA - G,Tampa preta G,1.0
+CAFE MOCHA - G,Luva para copo,1.0
+CAFE MOCHA - G,Calda de chocolate,59.4
+CAFE MOCHA - G,Mexedor de madeira,0.5
+CAFE MOCHA - M,Café em grão,13.0
+CAFE MOCHA - M,Açúcar,0.35
+CAFE MOCHA - M,Adoçante sucralose,0.15
+CAFE MOCHA - M,Copo papel M,1.0
+CAFE MOCHA - M,Tampa preta M,1.0
+CAFE MOCHA - M,Luva para copo,1.0
+CAFE MOCHA - M,Leite integral,242.06
+CAFE MOCHA - M,Leite de aveia,2.47
+CAFE MOCHA - M,Leite de soja,2.47
+CAFE MOCHA - M,Calda de chocolate,42.9
+CAFE MOCHA - M,Mexedor de madeira,0.5
+CAPPUCCINO BRASILEIRO - G,Base capuccino,87.0
+CAPPUCCINO BRASILEIRO - G,Leite integral,352.8
+CAPPUCCINO BRASILEIRO - G,Leite de aveia,3.6
+CAPPUCCINO BRASILEIRO - G,Leite sem lactose,3.6
+CAPPUCCINO BRASILEIRO - G,Copo papel G,1.0
+CAPPUCCINO BRASILEIRO - G,Tampa preta G,1.0
+CAPPUCCINO BRASILEIRO - G,Luva para copo,1.0
+CAPPUCCINO BRASILEIRO - M,Copo papel M,1.0
+CAPPUCCINO BRASILEIRO - M,Tampa preta M,1.0
+CAPPUCCINO BRASILEIRO - M,Luva para copo,1.0
+CAPPUCCINO BRASILEIRO - M,Base capuccino,58.0
+CAPPUCCINO BRASILEIRO - M,Leite integral,242.06
+CAPPUCCINO BRASILEIRO - M,Leite de aveia,2.47
+CAPPUCCINO BRASILEIRO - M,Leite de soja,2.47
+CAPPUCCINO GOCOFFEE - G,Café em grão,18.0
+CAPPUCCINO GOCOFFEE - G,Leite integral,352.8
+CAPPUCCINO GOCOFFEE - G,Leite de aveia,3.6
+CAPPUCCINO GOCOFFEE - G,Leite sem lactose,3.6
+CAPPUCCINO GOCOFFEE - G,Copo papel G,1.0
+CAPPUCCINO GOCOFFEE - G,Tampa preta G,1.0
+CAPPUCCINO GOCOFFEE - G,Luva para copo,1.0
+CAPPUCCINO GOCOFFEE - G,Xarope caramel,8.0
+CAPPUCCINO GOCOFFEE - G,Chantilly,50.0
+CAPPUCCINO GOCOFFEE - G,Gás NO2,0.1
+CAPPUCCINO GOCOFFEE - G,Canela em pó,0.3
+CAPPUCCINO ITALIANO - G,Café em grão,18.0
+CAPPUCCINO ITALIANO - G,Açúcar,0.7
+CAPPUCCINO ITALIANO - G,Adoçante sucralose,0.3
+CAPPUCCINO ITALIANO - G,Leite integral,352.8
+CAPPUCCINO ITALIANO - G,Leite de aveia,3.6
+CAPPUCCINO ITALIANO - G,Leite sem lactose,3.6
+CAPPUCCINO ITALIANO - G,Copo papel G,1.0
+CAPPUCCINO ITALIANO - G,Tampa preta G,1.0
+CAPPUCCINO ITALIANO - G,Luva para copo,1.0
+CAPPUCCINO ITALIANO - G,Canela em pó,0.3
+CAPPUCCINO ITALIANO - G,Mexedor de madeira,1.0
+CAPPUCCINO ITALIANO - M,Café em grão,18.0
+CAPPUCCINO ITALIANO - M,Açúcar,0.7
+CAPPUCCINO ITALIANO - M,Adoçante sucralose,0.3
+CAPPUCCINO ITALIANO - M,Copo papel M,1.0
+CAPPUCCINO ITALIANO - M,Tampa preta M,1.0
+CAPPUCCINO ITALIANO - M,Luva para copo,1.0
+CAPPUCCINO ITALIANO - M,Leite integral,242.06
+CAPPUCCINO ITALIANO - M,Leite de aveia,2.47
+CAPPUCCINO ITALIANO - M,Leite de soja,2.47
+CAPPUCCINO ITALIANO - M,Canela em pó,0.3
+CAPPUCCINO ITALIANO - M,Mexedor de madeira,1.0
+CHA MATE - G,Xarope matte,40.0
+CHA MATE - G,Copo plástico G,1.0
+CHA MATE - G,Tampa reta plástica,1.0
+CHA MATE - G,Canudo grosso,1.0
+CHA MATE - G,Água mineral,180.0
+CHAI GELADO - G,Leite integral,270.48
+CHAI GELADO - G,Leite de aveia,2.7600000000000002
+CHAI GELADO - G,Leite sem lactose,2.7600000000000002
+CHAI GELADO - G,Xarope chai,40.0
+CHAI GELADO - G,Canela em pó,0.3
+CHAI GELADO - G,Copo plástico G,1.0
+CHAI GELADO - G,Tampa reta plástica,1.0
+CHAI GELADO - G,Canudo grosso,1.0
+CHAI LATTE - G,Açúcar,0.13999999999999999
+CHAI LATTE - G,Adoçante sucralose,0.06
+CHAI LATTE - G,Leite integral,352.8
+CHAI LATTE - G,Leite de aveia,3.6
+CHAI LATTE - G,Leite sem lactose,3.6
+CHAI LATTE - G,Copo papel G,1.0
+CHAI LATTE - G,Tampa preta G,1.0
+CHAI LATTE - G,Luva para copo,1.0
+CHAI LATTE - G,Xarope chai,40.0
+CHAI LATTE - G,Mexedor de madeira,0.2
+CHAI LATTE - M,Açúcar,0.13999999999999999
+CHAI LATTE - M,Adoçante sucralose,0.06
+CHAI LATTE - M,Copo papel M,1.0
+CHAI LATTE - M,Tampa preta M,1.0
+CHAI LATTE - M,Luva para copo,1.0
+CHAI LATTE - M,Leite integral,242.06
+CHAI LATTE - M,Leite de aveia,2.47
+CHAI LATTE - M,Leite de soja,2.47
+CHAI LATTE - M,Xarope chai,32.0
+CHAI LATTE - M,Mexedor de madeira,0.2
+CHOCOLATE QUENTE  - G,Leite integral,352.8
+CHOCOLATE QUENTE  - G,Leite de aveia,3.6
+CHOCOLATE QUENTE  - G,Leite sem lactose,3.6
+CHOCOLATE QUENTE  - G,Copo papel G,1.0
+CHOCOLATE QUENTE  - G,Tampa preta G,1.0
+CHOCOLATE QUENTE  - G,Luva para copo,1.0
+CHOCOLATE QUENTE  - G,Base chocolate quente,87.0
+CHOCOLATE QUENTE - M,Copo papel M,1.0
+CHOCOLATE QUENTE - M,Tampa preta M,1.0
+CHOCOLATE QUENTE - M,Luva para copo,1.0
+CHOCOLATE QUENTE - M,Leite integral,242.06
+CHOCOLATE QUENTE - M,Leite de aveia,2.47
+CHOCOLATE QUENTE - M,Leite de soja,2.47
+CHOCOLATE QUENTE - M,Base chocolate quente,58.0
+CHOCOMALLOW GOCOFFEE - G,Leite integral,352.8
+CHOCOMALLOW GOCOFFEE - G,Leite de aveia,3.6
+CHOCOMALLOW GOCOFFEE - G,Leite sem lactose,3.6
+CHOCOMALLOW GOCOFFEE - G,Copo papel G,1.0
+CHOCOMALLOW GOCOFFEE - G,Tampa preta G,1.0
+CHOCOMALLOW GOCOFFEE - G,Luva para copo,1.0
+CHOCOMALLOW GOCOFFEE - G,Base chocolate quente,87.0
+CHOCOMALLOW GOCOFFEE - G,Marshmallow,4.0
+CHOCOMALLOW GOCOFFEE - M,Copo papel M,1.0
+CHOCOMALLOW GOCOFFEE - M,Tampa preta M,1.0
+CHOCOMALLOW GOCOFFEE - M,Luva para copo,1.0
+CHOCOMALLOW GOCOFFEE - M,Leite integral,242.06
+CHOCOMALLOW GOCOFFEE - M,Leite de aveia,2.47
+CHOCOMALLOW GOCOFFEE - M,Leite de soja,2.47
+CHOCOMALLOW GOCOFFEE - M,Base chocolate quente,58.0
+CHOCOMALLOW GOCOFFEE - M,Marshmallow,3.0
+COADO HARIO V60 - M,Copo papel M,1.0
+COADO HARIO V60 - M,Tampa preta M,1.0
+COADO HARIO V60 - M,Luva para copo,1.0
+COADO HARIO V60 - M,Café em grão,20.0
+COADO HARIO V60 - M,Filtro Hario,1.0
+COOKIE AVELÃ,Cookie Avelã,1.0
+COOKIE AVELÃ,Saco para salgados,1.0
+COOKIE AVELÃ,Guardanapo,1.0
+COOKIE BELGA,Saco para salgados,1.0
+COOKIE BELGA,Guardanapo,1.0
+COOKIE BELGA,Cookie Belga,1.0
+COOKIE GOTAS,Cookie Gotas,1.0
+COOKIE GOTAS,Saco para salgados,1.0
+COOKIE GOTAS,Guardanapo,1.0
+COOKIE LIMÃO,Cookie Limão,1.0
+COOKIE LIMÃO,Saco para salgados,1.0
+COOKIE LIMÃO,Guardanapo,1.0
+ESFIHA DE CALABRESA,Saco para salgados,1.0
+ESFIHA DE CALABRESA,Guardanapo,1.0
+ESFIHA DE CALABRESA,Ketchup,0.1
+ESFIHA DE CALABRESA,Mostarda,0.05
+ESFIHA DE CALABRESA,Saco Kraft,0.05
+ESFIHA DE CALABRESA,Esfiha de calabresa,1.0
+ESFIHA DE CARNE,Saco para salgados,1.0
+ESFIHA DE CARNE,Guardanapo,1.0
+ESFIHA DE CARNE,Ketchup,0.1
+ESFIHA DE CARNE,Mostarda,0.05
+ESFIHA DE CARNE,Saco Kraft,0.05
+ESFIHA DE CARNE,Esfiha de carne,1.0
+ESPRESSO GO - P,Café em grão,18.0
+ESPRESSO GO - P,Copo papel P,1.0
+ESPRESSO GO - P,Tampa preta P,1.0
+ESPRESSO GO - P,Luva para copo,0.2
+ESPRESSO GO - P,Açúcar,0.7
+ESPRESSO GO - P,Adoçante sucralose,0.3
+ESPRESSO GO - P,Mexedor de madeira,1.0
+FOLHADO DE FRANGO,Saco para salgados,1.0
+FOLHADO DE FRANGO,Guardanapo,1.0
+FOLHADO DE FRANGO,Ketchup,0.1
+FOLHADO DE FRANGO,Mostarda,0.05
+FOLHADO DE FRANGO,Saco Kraft,0.05
+FOLHADO DE FRANGO,Folhado de frango,1.0
+FOLHADO PERU QJO MINAS,Saco para salgados,1.0
+FOLHADO PERU QJO MINAS,Guardanapo,1.0
+FOLHADO PERU QJO MINAS,Ketchup,0.1
+FOLHADO PERU QJO MINAS,Mostarda,0.05
+FOLHADO PERU QJO MINAS,Saco Kraft,0.05
+FOLHADO PERU QJO MINAS,Folhado de perú com queijo minas,1.0
+FOLHADO PRES E QJO,Saco para salgados,1.0
+FOLHADO PRES E QJO,Guardanapo,1.0
+FOLHADO PRES E QJO,Ketchup,0.1
+FOLHADO PRES E QJO,Mostarda,0.05
+FOLHADO PRES E QJO,Saco Kraft,0.05
+FOLHADO PRES E QJO,Folhado de presunto e queijo,1.0
+FRAPPE AVELÃ - G,Leite integral,176.4
+FRAPPE AVELÃ - G,Leite de aveia,1.8
+FRAPPE AVELÃ - G,Leite sem lactose,1.8
+FRAPPE AVELÃ - G,Base creme,75.0
+FRAPPE AVELÃ - G,Coffee roast,3.9000000000000004
+FRAPPE AVELÃ - G,Xarope avelã,24.0
+FRAPPE AVELÃ - G,Copo plástico G,1.0
+FRAPPE AVELÃ - G,Tampa bolha plástica,1.0
+FRAPPE AVELÃ - G,Canudo grosso,1.0
+FRAPPE AVELÃ - G,Chantilly,50.0
+FRAPPE AVELÃ - G,Gás NO2,0.1
+FRAPPE AVELÃ - G,Chocolate 70%,0.5
+FRAPPE AVELÃ - G,Calda de chocolate,9.899999999999999
+FRAPPE AVELÃ - P,Leite integral,82.32
+FRAPPE AVELÃ - P,Leite de aveia,0.84
+FRAPPE AVELÃ - P,Leite sem lactose,0.84
+FRAPPE AVELÃ - P,Base creme,50.0
+FRAPPE AVELÃ - P,Coffee roast,2.6
+FRAPPE AVELÃ - P,Xarope avelã,16.0
+FRAPPE AVELÃ - P,Copo plástico P,1.0
+FRAPPE AVELÃ - P,Tampa bolha plástica,1.0
+FRAPPE AVELÃ - P,Canudo grosso,1.0
+FRAPPE AVELÃ - P,Chantilly,50.0
+FRAPPE AVELÃ - P,Gás NO2,0.1
+FRAPPE AVELÃ - P,Chocolate 70%,0.5
+FRAPPE AVELÃ - P,Calda de chocolate,9.899999999999999
+FRAPPE BANOFFE - G,Leite integral,176.4
+FRAPPE BANOFFE - G,Leite de aveia,1.8
+FRAPPE BANOFFE - G,Leite sem lactose,1.8
+FRAPPE BANOFFE - G,Base creme,75.0
+FRAPPE BANOFFE - G,Coffee roast,3.9000000000000004
+FRAPPE BANOFFE - G,Xarope banana,24.0
+FRAPPE BANOFFE - G,Copo plástico G,1.0
+FRAPPE BANOFFE - G,Tampa bolha plástica,1.0
+FRAPPE BANOFFE - G,Canudo grosso,1.0
+FRAPPE BANOFFE - G,Chantilly,50.0
+FRAPPE BANOFFE - G,Gás NO2,0.1
+FRAPPE BANOFFE - G,Cobertura doce de leite,25.0
+FRAPPE BANOFFE - G,Canela em pó,0.3
+FRAPPE BANOFFEE - P,Leite integral,82.32
+FRAPPE BANOFFEE - P,Leite de aveia,0.84
+FRAPPE BANOFFEE - P,Leite sem lactose,0.84
+FRAPPE BANOFFEE - P,Base creme,50.0
+FRAPPE BANOFFEE - P,Coffee roast,2.6
+FRAPPE BANOFFEE - P,Xarope banana,16.0
+FRAPPE BANOFFEE - P,Copo plástico P,1.0
+FRAPPE BANOFFEE - P,Tampa bolha plástica,1.0
+FRAPPE BANOFFEE - P,Canudo grosso,1.0
+FRAPPE BANOFFEE - P,Chantilly,50.0
+FRAPPE BANOFFEE - P,Gás NO2,0.1
+FRAPPE BANOFFEE - P,Cobertura doce de leite,25.0
+FRAPPE BANOFFEE - P,Canela em pó,0.3
+FRAPPE CAPPUCCINO - P,Base capuccino,29.0
+FRAPPE CAPPUCCINO - P,Leite integral,141.12
+FRAPPE CAPPUCCINO - P,Leite de aveia,1.44
+FRAPPE CAPPUCCINO - P,Leite sem lactose,1.44
+FRAPPE CAPPUCCINO - P,Copo plástico P,1.0
+FRAPPE CAPPUCCINO - P,Tampa bolha plástica,1.0
+FRAPPE CAPPUCCINO - P,Canudo grosso,1.0
+FRAPPE CAPPUCCINO - P,Chantilly,50.0
+FRAPPE CAPPUCCINO - P,Gás NO2,0.1
+FRAPPE CAPPUCCINO - P,Canela em pó,0.3
+FRAPPE CAPUCCINO - G,Base capuccino,29.0
+FRAPPE CAPUCCINO - G,Leite integral,270.48
+FRAPPE CAPUCCINO - G,Leite de aveia,2.7600000000000002
+FRAPPE CAPUCCINO - G,Leite sem lactose,2.7600000000000002
+FRAPPE CAPUCCINO - G,Copo plástico G,1.0
+FRAPPE CAPUCCINO - G,Tampa bolha plástica,1.0
+FRAPPE CAPUCCINO - G,Canudo grosso,1.0
+FRAPPE CAPUCCINO - G,Chantilly,50.0
+FRAPPE CAPUCCINO - G,Gás NO2,0.1
+FRAPPE CAPUCCINO - G,Canela em pó,0.3
+FRAPPE CARAMEL - G,Leite integral,176.4
+FRAPPE CARAMEL - G,Leite de aveia,1.8
+FRAPPE CARAMEL - G,Leite sem lactose,1.8
+FRAPPE CARAMEL - G,Base creme,75.0
+FRAPPE CARAMEL - G,Coffee roast,3.9000000000000004
+FRAPPE CARAMEL - G,Xarope caramel,24.0
+FRAPPE CARAMEL - G,Copo plástico G,1.0
+FRAPPE CARAMEL - G,Tampa bolha plástica,1.0
+FRAPPE CARAMEL - G,Canudo grosso,1.0
+FRAPPE CARAMEL - G,Chantilly,50.0
+FRAPPE CARAMEL - G,Gás NO2,0.1
+FRAPPE CARAMEL - G,Cobertura caramelo,25.0
+FRAPPE CARAMEL - P,Leite integral,82.32
+FRAPPE CARAMEL - P,Leite de aveia,0.84
+FRAPPE CARAMEL - P,Leite sem lactose,0.84
+FRAPPE CARAMEL - P,Base creme,50.0
+FRAPPE CARAMEL - P,Coffee roast,2.6
+FRAPPE CARAMEL - P,Copo plástico P,1.0
+FRAPPE CARAMEL - P,Tampa bolha plástica,1.0
+FRAPPE CARAMEL - P,Canudo grosso,1.0
+FRAPPE CARAMEL - P,Chantilly,50.0
+FRAPPE CARAMEL - P,Gás NO2,0.1
+FRAPPE CARAMEL - P,Cobertura caramelo,25.0
+FRAPPE CARAMELO SALGADO - G,Leite integral,176.4
+FRAPPE CARAMELO SALGADO - G,Leite de aveia,1.8
+FRAPPE CARAMELO SALGADO - G,Leite sem lactose,1.8
+FRAPPE CARAMELO SALGADO - G,Base creme,75.0
+FRAPPE CARAMELO SALGADO - G,Coffee roast,3.9000000000000004
+FRAPPE CARAMELO SALGADO - G,Xarope caramel salgado,24.0
+FRAPPE CARAMELO SALGADO - G,Copo plástico G,1.0
+FRAPPE CARAMELO SALGADO - G,Tampa bolha plástica,1.0
+FRAPPE CARAMELO SALGADO - G,Canudo grosso,1.0
+FRAPPE CARAMELO SALGADO - G,Chantilly,100.0
+FRAPPE CARAMELO SALGADO - G,Gás NO2,0.2
+FRAPPE CARAMELO SALGADO - G,Cobertura caramelo,25.0
+FRAPPE CHOCOLLATE - G,Leite integral,176.4
+FRAPPE CHOCOLLATE - G,Leite de aveia,1.8
+FRAPPE CHOCOLLATE - G,Leite sem lactose,1.8
+FRAPPE CHOCOLLATE - G,Base creme,75.0
+FRAPPE CHOCOLLATE - G,Coffee roast,3.9000000000000004
+FRAPPE CHOCOLLATE - G,Xarope chocolate,24.0
+FRAPPE CHOCOLLATE - G,Copo plástico G,1.0
+FRAPPE CHOCOLLATE - G,Tampa bolha plástica,1.0
+FRAPPE CHOCOLLATE - G,Canudo grosso,1.0
+FRAPPE CHOCOLLATE - G,Chantilly,50.0
+FRAPPE CHOCOLLATE - G,Gás NO2,0.1
+FRAPPE CHOCOLLATE - G,Calda de chocolate,16.5
+FRAPPE CHOCOLLATE - P,Leite integral,82.32
+FRAPPE CHOCOLLATE - P,Leite de aveia,0.84
+FRAPPE CHOCOLLATE - P,Leite sem lactose,0.84
+FRAPPE CHOCOLLATE - P,Base creme,50.0
+FRAPPE CHOCOLLATE - P,Coffee roast,2.6
+FRAPPE CHOCOLLATE - P,Xarope chocolate,16.0
+FRAPPE CHOCOLLATE - P,Copo plástico P,1.0
+FRAPPE CHOCOLLATE - P,Tampa bolha plástica,1.0
+FRAPPE CHOCOLLATE - P,Canudo grosso,1.0
+FRAPPE CHOCOLLATE - P,Chantilly,50.0
+FRAPPE CHOCOLLATE - P,Gás NO2,0.1
+FRAPPE CHOCOLLATE - P,Calda de chocolate,16.5
+FRAPPE CREAM CHIPS - G,Leite integral,176.4
+FRAPPE CREAM CHIPS - G,Leite de aveia,1.8
+FRAPPE CREAM CHIPS - G,Leite sem lactose,1.8
+FRAPPE CREAM CHIPS - G,Base creme,75.0
+FRAPPE CREAM CHIPS - G,Coffee roast,3.9000000000000004
+FRAPPE CREAM CHIPS - G,Xarope baunilha,24.0
+FRAPPE CREAM CHIPS - G,Copo plástico G,1.0
+FRAPPE CREAM CHIPS - G,Tampa bolha plástica,1.0
+FRAPPE CREAM CHIPS - G,Canudo grosso,1.0
+FRAPPE CREAM CHIPS - G,Chantilly,50.0
+FRAPPE CREAM CHIPS - G,Gás NO2,0.1
+FRAPPE CREAM CHIPS - G,Calda de chocolate,9.899999999999999
+FRAPPE CREAM CHIPS - G,Gotas de chocolate,51.4
+FRAPPE CREAM CHIPS - P,Leite integral,82.32
+FRAPPE CREAM CHIPS - P,Leite de aveia,0.84
+FRAPPE CREAM CHIPS - P,Leite sem lactose,0.84
+FRAPPE CREAM CHIPS - P,Base creme,50.0
+FRAPPE CREAM CHIPS - P,Coffee roast,2.6
+FRAPPE CREAM CHIPS - P,Xarope baunilha,16.0
+FRAPPE CREAM CHIPS - P,Copo plástico P,1.0
+FRAPPE CREAM CHIPS - P,Tampa bolha plástica,1.0
+FRAPPE CREAM CHIPS - P,Canudo grosso,1.0
+FRAPPE CREAM CHIPS - P,Chantilly,50.0
+FRAPPE CREAM CHIPS - P,Gás NO2,0.1
+FRAPPE CREAM CHIPS - P,Calda de chocolate,9.899999999999999
+FRAPPE CREAM CHIPS - P,Gotas de chocolate,25.7
+FRAPPE DO DIA - P,Base capuccino,5.51
+FRAPPE DO DIA - P,Leite integral,66.6792
+FRAPPE DO DIA - P,Leite de aveia,0.6804
+FRAPPE DO DIA - P,Leite sem lactose,0.6804
+FRAPPE DO DIA - P,Leite integral,26.812800000000003
+FRAPPE DO DIA - P,Leite de aveia,0.2736
+FRAPPE DO DIA - P,Leite sem lactose,0.2736
+FRAPPE DO DIA - P,Base creme,7.5
+FRAPPE DO DIA - P,Base creme,14.499999999999998
+FRAPPE DO DIA - P,Base creme,9.0
+FRAPPE DO DIA - P,Base creme,9.5
+FRAPPE DO DIA - P,Coffee roast,0.195
+FRAPPE DO DIA - P,Coffee roast,0.754
+FRAPPE DO DIA - P,Coffee roast,0.49400000000000005
+FRAPPE DO DIA - P,Xarope banana,4.64
+FRAPPE DO DIA - P,Xarope baunilha,2.4
+FRAPPE DO DIA - P,Xarope caramel,3.04
+FRAPPE DO DIA - P,Xarope morango,2.88
+FRAPPE DO DIA - P,Copo plástico P,1.0
+FRAPPE DO DIA - P,Tampa bolha plástica,1.0
+FRAPPE DO DIA - P,Canudo grosso,1.0
+FRAPPE DO DIA - P,Chantilly,50.0
+FRAPPE DO DIA - P,Gás NO2,0.1
+FRAPPE DO DIA - P,Cobertura doce de leite,8.7
+FRAPPE DO DIA - P,Cobertura caramelo,4.75
+FRAPPE DO DIA - P,Cobertura de morango,4.5
+FRAPPE DO DIA - P,Canela em pó,0.056999999999999995
+FRAPPE DO DIA - P,Canela em pó,0.087
+FRAPPE PAÇOCA - G,Leite integral,176.4
+FRAPPE PAÇOCA - G,Leite de aveia,1.8
+FRAPPE PAÇOCA - G,Leite sem lactose,1.8
+FRAPPE PAÇOCA - G,Base creme,75.0
+FRAPPE PAÇOCA - G,Coffee roast,3.9000000000000004
+FRAPPE PAÇOCA - G,Copo plástico G,1.0
+FRAPPE PAÇOCA - G,Tampa bolha plástica,1.0
+FRAPPE PAÇOCA - G,Canudo grosso,1.0
+FRAPPE PAÇOCA - G,Chantilly,50.0
+FRAPPE PAÇOCA - G,Gás NO2,0.1
+FRAPPE PAÇOCA - G,Paçoca,55.800000000000004
+FRAPPE PAÇOCA - P,Leite integral,82.32
+FRAPPE PAÇOCA - P,Leite de aveia,0.84
+FRAPPE PAÇOCA - P,Leite sem lactose,0.84
+FRAPPE PAÇOCA - P,Base creme,50.0
+FRAPPE PAÇOCA - P,Coffee roast,2.6
+FRAPPE PAÇOCA - P,Copo plástico P,1.0
+FRAPPE PAÇOCA - P,Tampa bolha plástica,1.0
+FRAPPE PAÇOCA - P,Canudo grosso,1.0
+FRAPPE PAÇOCA - P,Chantilly,50.0
+FRAPPE PAÇOCA - P,Gás NO2,0.1
+FRAPPE PAÇOCA - P,Paçoca,37.2
+FRAPPE RED - G,Leite integral,176.4
+FRAPPE RED - G,Leite de aveia,1.8
+FRAPPE RED - G,Leite sem lactose,1.8
+FRAPPE RED - G,Base creme,75.0
+FRAPPE RED - G,Xarope morango,24.0
+FRAPPE RED - G,Copo plástico G,1.0
+FRAPPE RED - G,Tampa bolha plástica,1.0
+FRAPPE RED - G,Canudo grosso,1.0
+FRAPPE RED - G,Chantilly,50.0
+FRAPPE RED - G,Gás NO2,0.1
+FRAPPE RED - G,Cobertura de morango,25.0
+FRAPPE RED - P,Leite integral,82.32
+FRAPPE RED - P,Leite de aveia,0.84
+FRAPPE RED - P,Leite sem lactose,0.84
+FRAPPE RED - P,Base creme,50.0
+FRAPPE RED - P,Xarope morango,16.0
+FRAPPE RED - P,Copo plástico P,1.0
+FRAPPE RED - P,Tampa bolha plástica,1.0
+FRAPPE RED - P,Canudo grosso,1.0
+FRAPPE RED - P,Chantilly,50.0
+FRAPPE RED - P,Gás NO2,0.1
+FRAPPE RED - P,Cobertura de morango,25.0
+FRAPPE VANILLA MACCHIATO - G,Leite integral,176.4
+FRAPPE VANILLA MACCHIATO - G,Leite de aveia,1.8
+FRAPPE VANILLA MACCHIATO - G,Leite sem lactose,1.8
+FRAPPE VANILLA MACCHIATO - G,Base creme,75.0
+FRAPPE VANILLA MACCHIATO - G,Coffee roast,2.6
+FRAPPE VANILLA MACCHIATO - G,Xarope baunilha,24.0
+FRAPPE VANILLA MACCHIATO - G,Copo plástico G,1.0
+FRAPPE VANILLA MACCHIATO - G,Tampa bolha plástica,1.0
+FRAPPE VANILLA MACCHIATO - G,Canudo grosso,1.0
+FRAPPE VANILLA MACCHIATO - G,Chantilly,50.0
+FRAPPE VANILLA MACCHIATO - G,Gás NO2,0.1
+FRAPPE VANILLA MACCHIATO - P,Leite integral,82.32
+FRAPPE VANILLA MACCHIATO - P,Leite de aveia,0.84
+FRAPPE VANILLA MACCHIATO - P,Leite sem lactose,0.84
+FRAPPE VANILLA MACCHIATO - P,Base creme,50.0
+FRAPPE VANILLA MACCHIATO - P,Coffee roast,1.3
+FRAPPE VANILLA MACCHIATO - P,Xarope baunilha,16.0
+FRAPPE VANILLA MACCHIATO - P,Copo plástico P,1.0
+FRAPPE VANILLA MACCHIATO - P,Tampa bolha plástica,1.0
+FRAPPE VANILLA MACCHIATO - P,Canudo grosso,1.0
+FRAPPE VANILLA MACCHIATO - P,Chantilly,50.0
+FRAPPE VANILLA MACCHIATO - P,Gás NO2,0.1
+GO TOAST BLUMENAU,Saco para salgados,1.0
+GO TOAST BLUMENAU,Guardanapo,1.0
+GO TOAST BLUMENAU,Ketchup,0.1
+GO TOAST BLUMENAU,Mostarda,0.05
+GO TOAST BLUMENAU,Saco Kraft,0.05
+GO TOAST BLUMENAU,Go Toast Blumenau,1.0
+GO TOAST NAPOLITANO,Saco para salgados,1.0
+GO TOAST NAPOLITANO,Guardanapo,1.0
+GO TOAST NAPOLITANO,Ketchup,0.1
+GO TOAST NAPOLITANO,Mostarda,0.05
+GO TOAST NAPOLITANO,Saco Kraft,0.05
+GO TOAST NAPOLITANO,Go Toast Napolitano,1.0
+GO TOAST PERU E REQUEIJÃO,Saco para salgados,1.0
+GO TOAST PERU E REQUEIJÃO,Guardanapo,1.0
+GO TOAST PERU E REQUEIJÃO,Ketchup,0.1
+GO TOAST PERU E REQUEIJÃO,Mostarda,0.05
+GO TOAST PERU E REQUEIJÃO,Saco Kraft,0.05
+GO TOAST PERU E REQUEIJÃO,Go Toast Perú e Requeijão,1.0
+HIBISCO JAMAICA  - G,Xarope limão siciliano,40.0
+HIBISCO JAMAICA  - G,Hibisco,10.6
+HIBISCO JAMAICA  - G,Copo plástico G,1.0
+HIBISCO JAMAICA  - G,Tampa reta plástica,1.0
+HIBISCO JAMAICA  - G,Canudo grosso,1.0
+PAO DE QUEIJO,Saco para salgados,1.0
+PAO DE QUEIJO,Guardanapo,1.0
+PAO DE QUEIJO,Ketchup,0.1
+PAO DE QUEIJO,Mostarda,0.05
+PAO DE QUEIJO,Saco Kraft,0.05
+PAO DE QUEIJO,Pão de queijo - 90g,1.0

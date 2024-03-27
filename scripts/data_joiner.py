@@ -23,8 +23,10 @@ def read_sales_data(filename):
     df["Data Venda"] = pd.to_datetime(df["Data Venda"],format='%d/%m/%Y %H:%M', dayfirst=True)
     df["Data"] = pd.to_datetime(df["Data Venda"].dt.date)
     df["Hora"] = df["Data Venda"].dt.time
+    df["Ano"] = df['Data Venda'].dt.strftime("%Y")
     df["Ano Mês"] = df["Data Venda"].dt.strftime('%Y-%m')
     df["Faixa Horária"] = df["Data Venda"].dt.hour
+    df['Semana'] = df['Data Venda'].dt.isocalendar().week
     df["Dia da Semana"] = df["Data Venda"].dt.weekday
     df["Hora Decimal"] = df["Data Venda"].dt.hour + df["Data Venda"].dt.minute / 60
     df["Período"] = "1 - Manhã"
@@ -43,9 +45,8 @@ def read_inventory_data(filename):
     return df
 
 new_data = pd.concat([read_sales_data(file) for file in sales_reports]).drop_duplicates()
-# data = pd.concat([new_data, previous_data]).drop_duplicates()
 sales_data = new_data.merge(cat, on='Produto', how='left')
-sales_data.to_csv("sales.csv")
+sales_data.to_csv("sales.csv", index=False)
 
 inventory_data = pd.concat([read_inventory_data(file) for file in inventory_reports])
-inventory_data.to_csv("inventory.csv")
+inventory_data.to_csv("../data/inventory.csv", index=False)
