@@ -231,7 +231,7 @@ inventory["Custo"] = inventory["Pedido"] * inventory["Preço"]
 datasets_tab.write(inventory)
 
 inventory_tab.subheader("Níveis")
-inventory_tab.dataframe(data=inventory[inventory["Pedido"] > 0][['Produto', 'Saldo']])
+inventory_tab.dataframe(data=inventory[['Produto', 'Saldo', 'Demanda', 'Dias para o fim']].sort_values("Produto"))
 
 inventory_tab.subheader("Pedidos")
 inventory_tab.dataframe(data=inventory[inventory["Pedido"] > 0].groupby(['Lista', 'Produto'])[['Pedido', 'Custo']].sum().reset_index().style.format({"Custo": "${:,}"}),)
