@@ -41,7 +41,7 @@ jobs:
         echo "Checking for old files"
         ls -a -l
         echo "Installing python libraries"
-        python3 -m pip install selenium webdriver-manager dropbox pathlib pandas xlrd
+        python3 -m pip install selenium webdriver-manager dropbox pathlib pandas xlrd prophet
 
     - name: Run scrapper
       run: |
@@ -79,6 +79,10 @@ jobs:
         unzip Vendas.zip
         unzip EstoqueDetalhado.zip
         python3 scripts/data_joiner.py
+    
+    - name: Create forecast
+      run: |
+        python3 scripts/forecast.py
         
     - name: Check produced files
       run: |
@@ -93,6 +97,7 @@ jobs:
         git add data/sales.csv
         git add data/inventory.csv
         git add data/inventory_demand.csv
+        git add data/forecast.csv
         echo "Checking for status after adding files"
         git status
         git commit -m "Update data"
