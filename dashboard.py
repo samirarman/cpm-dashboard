@@ -17,8 +17,12 @@ kpi_tab, cogs_tab, material_tab, datasets_tab, inventory_tab = st.tabs(["KPI", "
 ##########
 # DATA PREPARATION
 ##########
-cat = pd.read_csv("aux_data/cat.csv")
-data = pd.read_csv("data/sales.csv")
+@st.cache_data
+def read_data(filename):
+    return pd.read_csv(filename)
+
+cat = read_data("aux_data/cat.csv")
+data = read_data("data/sales.csv")
 datasets_tab.subheader("Sales Data")
 datasets_tab.write(data)
 
@@ -51,18 +55,19 @@ share['Quantidade'] = share['Quantidade'].astype('int')
 share = share.groupby([ 'Ano Mês','Quantidade']).count()['Número venda'].reset_index().merge(share.groupby([ 'Ano Mês']).count()['Quantidade'].reset_index(), on='Ano Mês', how='left')
 share['Percentage'] = share['Número venda']/share['Quantidade_y'] * 100
 
-ldm = pd.read_csv("aux_data/ldm.csv")#pd.read_sql_query("SELECT * FROM boms_view", con)
+ldm = read_data("aux_data/ldm.csv")#pd.read_sql_query("SELECT * FROM boms_view", con)
 datasets_tab.subheader("LDM")
 datasets_tab.write(ldm)
 
 # purchases = pd.read_sql_query("SELECT * FROM excel_exporter", con, parse_dates=True)
+purchases = read_data("aux_data/purchases.csv")
 # purchases = purchases.iloc[:,[0,2,11,12,13,14,15,16,17,19,]].set_axis(['date', 'material', 'price', 'disc', 'freight', 'icms_st', 'difal', 'ipi', 'total', 'qty'], axis=1)
 # purchases['unit_price'] = purchases['price']/purchases['qty']
 # purchases['unit_cost'] = purchases['total']/purchases['qty']
 # purchases['surcharge'] = purchases['total']/purchases['price'] - 1
 # purchases['date'] = pd.to_datetime(purchases['date'])
 # purchases['year_month'] = purchases['date'].dt.strftime('%Y-%m')
-purchases = pd.read_csv("aux_data/purchases.csv")
+
 datasets_tab.subheader("Purchases")
 datasets_tab.write(purchases)
 
@@ -126,7 +131,7 @@ qty_sold['avg_price'] = qty_sold['Total'] / qty_sold['Quantidade']
 qty_sold['nominal_cost'] = qty_sold['Quantidade'] * qty_sold['material_cost']
 qty_sold['gross_margin'] = qty_sold['Total'] - qty_sold['nominal_cost']
 qty_sold['net_margin'] = qty_sold['Total'] * 0.9225 - qty_sold[ 'nominal_cost']
-qty_sold[ 'unit_net_margin'] = qty_sold['net_margin'] / qty_sold['Quantidade']
+qty_sold['unit_net_margin'] = qty_sold['net_margin'] / qty_sold['Quantidade']
 qty_sold['gross_cogs_perc'] = qty_sold['material_cost'] / qty_sold['avg_price']
 qty_sold['net_cogs_perc'] = qty_sold['material_cost'] / (qty_sold['avg_price'] * 0.9225)
 qty_sold['ideal_price_26'] = qty_sold['material_cost'] / 0.28
@@ -135,18 +140,27 @@ qty_sold['ideal_price_30'] = qty_sold['material_cost'] / 0.30
 datasets_tab.subheader("Qty Sold dataset")
 datasets_tab.write(qty_sold)
 
+
+prod_data = read_data("aux_data/prod_data.csv")
+inv_demand = read_data("data/inventory_demand.csv")
+
+datasets_tab.subheader("Product Data")
+datasets_tab.write(prod_data)
+
+datasets_tab.subheader("Product demand")
+datasets_tab.write(inv_demand)
 #####################
 # KPI TAB
 #####################
 
 kpi_tab.subheader("Receita")
 kpi_tab.line_chart(data.groupby('Data')['Total'].sum().reset_index().rename(columns={"Total":"Receita"}), x='Data', y='Receita')
-kpi_tab.bar_chart(data.groupby(['Ano Mês'])['Total'].sum().reset_index().rename(columns={"Total":"Receita"}), x='Ano Mês', y='Receita')
+kpi_tab.line_chart(data.groupby(['Mês', 'Ano'])['Total'].sum().reset_index().rename(columns={"Total":"Receita"}), x='Mês', y='Receita', color='Ano')
 kpi_tab.line_chart(data.groupby(['Ano', 'Semana'])['Total'].sum().reset_index().rename(columns={"Total":"Receita"}), x='Semana', y='Receita', color='Ano')
 
 kpi_tab.subheader("Número de pedidos")
 kpi_tab.line_chart(data.groupby('Data')['Número venda'].nunique().reset_index().rename(columns={"Número venda":"Pedidos"}), x='Data', y='Pedidos')
-kpi_tab.bar_chart(data.groupby('Ano Mês')['Número venda'].nunique().reset_index().rename(columns={"Número venda":"Pedidos"}), x='Ano Mês', y='Pedidos')
+kpi_tab.line_chart(data.groupby(['Mês', 'Ano'])['Número venda'].nunique().reset_index().rename(columns={"Número venda":"Pedidos"}), x='Mês', y='Pedidos', color='Ano')
 kpi_tab.line_chart(data.groupby(['Ano', 'Semana'])['Número venda'].nunique().reset_index().rename(columns={"Número venda":"Pedidos"}), x='Semana', y='Pedidos', color='Ano')
 # kpi_tab.line_chart(data.groupby(['Ano', 'Mês'])['Total'].sum().reset_index().rename(columns={"Total":"Receita"}), x='Mês', y='Receita', color='Ano')
 
@@ -181,6 +195,7 @@ sel_prod = cogs_tab.selectbox("Selecione um produto:", pd.Series(data['Produto']
 cogs_tab.subheader(sel_prod)
 filtered_product = qty_sold[qty_sold['Produto'] == sel_prod]
 filtered_material = material_usage[material_usage['product'] == sel_prod]
+print(filtered_material['material_cost'])
 filtered_ldm = ldm[ldm['product_id'] == sel_prod]
 
 cogs_tab.line_chart(filtered_product, x= 'Ano Mês', y='Total')
@@ -214,14 +229,10 @@ material_tab.line_chart(avg_material_data, x='year_month', y='avg_cost')
 #####################
 # INVENTORY TAB
 #####################
-prod_data = pd.read_csv("aux_data/prod_data.csv")
 # moves = pd.read_csv("../moves.csv")
 inventory_tab.subheader("Materials levels")
-inv_demand = pd.read_csv("data/inventory_demand.csv")
 inventory = inv_demand.merge(prod_data, on="Produto", how="left")
 
-datasets_tab.write(inv_demand)
-datasets_tab.write(prod_data)
 inventory = inventory[inventory["Descontinuado"] == "Não"]
 inventory['Estoque alvo'] = -inventory["Demanda"] * (inventory["Período"] + inventory["Lead"]) + -inventory["Demanda"] * inventory["Segurança"]
 inventory["Necessidade"] = inventory["Estoque alvo"] - inventory["Saldo"]
