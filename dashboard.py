@@ -156,11 +156,13 @@ datasets_tab.write(inv_demand)
 kpi_tab.subheader("Receita")
 kpi_tab.line_chart(data.groupby('Data')['Total'].sum().reset_index().rename(columns={"Total":"Receita"}), x='Data', y='Receita')
 kpi_tab.line_chart(data.groupby(['Mês', 'Ano'])['Total'].sum().reset_index().rename(columns={"Total":"Receita"}), x='Mês', y='Receita', color='Ano')
+kpi_tab.line_chart(data.groupby(['Mês', 'Ano'])['Total'].sum().groupby(level='Ano').cumsum().reset_index().rename(columns={"Total":"Receita"}), x='Mês', y='Receita', color='Ano')
 kpi_tab.line_chart(data.groupby(['Ano', 'Semana'])['Total'].sum().reset_index().rename(columns={"Total":"Receita"}), x='Semana', y='Receita', color='Ano')
 
 kpi_tab.subheader("Número de pedidos")
 kpi_tab.line_chart(data.groupby('Data')['Número venda'].nunique().reset_index().rename(columns={"Número venda":"Pedidos"}), x='Data', y='Pedidos')
 kpi_tab.line_chart(data.groupby(['Mês', 'Ano'])['Número venda'].nunique().reset_index().rename(columns={"Número venda":"Pedidos"}), x='Mês', y='Pedidos', color='Ano')
+kpi_tab.line_chart(data.groupby(['Mês', 'Ano'])['Número venda'].nunique().groupby(level="Ano").cumsum().reset_index().rename(columns={"Número venda":"Pedidos"}), x='Mês', y='Pedidos', color='Ano')
 kpi_tab.line_chart(data.groupby(['Ano', 'Semana'])['Número venda'].nunique().reset_index().rename(columns={"Número venda":"Pedidos"}), x='Semana', y='Pedidos', color='Ano')
 # kpi_tab.line_chart(data.groupby(['Ano', 'Mês'])['Total'].sum().reset_index().rename(columns={"Total":"Receita"}), x='Mês', y='Receita', color='Ano')
 
