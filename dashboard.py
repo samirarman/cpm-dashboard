@@ -18,10 +18,11 @@ kpi_tab, cogs_tab, material_tab, datasets_tab, inventory_tab = st.tabs(["KPI", "
 # DATA PREPARATION
 ##########
 def read_data(filename):
-    return pd.read_csv(filename)
+    return pd.read_csv(filename, date_format="%Y-%m-%d")
 
 cat = read_data("aux_data/cat.csv")
 data = read_data("data/sales.csv")
+forecast = read_data("data/forecast.csv")
 datasets_tab.subheader("Sales Data")
 datasets_tab.write(data)
 
@@ -149,6 +150,12 @@ datasets_tab.write(inv_demand)
 #####################
 # KPI TAB
 #####################
+kpi_tab.subheader("Latest results")
+
+latest = data.groupby('Data')['Total'].sum().tail(1).reset_index().merge(data.groupby('Data')['Número venda'].nunique().tail(1).reset_index(), on='Data')
+latest.rename(columns={'Número venda':'Quantidade'}, inplace=True)
+latest['Ticket-Médio'] = latest['Total'] / latest['Quantidade']
+kpi_tab.write(latest.reset_index(drop=True))
 
 kpi_tab.subheader("Receita")
 
