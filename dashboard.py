@@ -3,7 +3,7 @@ import pandas as pd
 from glob import glob
 import datetime as datetime
 import numpy as np
-import sqlite3
+
 
 ##########
 # SETUP
@@ -17,7 +17,6 @@ kpi_tab, cogs_tab, material_tab, datasets_tab, inventory_tab = st.tabs(["KPI", "
 ##########
 # DATA PREPARATION
 ##########
-@st.cache_data
 def read_data(filename):
     return pd.read_csv(filename)
 
@@ -75,7 +74,6 @@ avg_cost = purchases.groupby(['year_month','material'])[['total', 'qty']].sum().
 avg_cost['avg_cost'] = avg_cost['total']/avg_cost['qty']
 materials = ldm['material_id'].unique()
 
-@st.cache_data
 def fill_avg_costs(material):
     a = avg_cost[avg_cost['material'] == material]
     lh = purchases['year_month'].drop_duplicates().reset_index().sort_values(by='year_month')
@@ -93,7 +91,6 @@ qty_sold = data.groupby(["Ano Mês", "Produto"])[['Total', 'Quantidade']].sum().
 datasets_tab.subheader('Product qty and revenue overview')
 datasets_tab.write(qty_sold)
 
-@st.cache_data
 def calculate_cogs(product):
     df = pd.DataFrame()
     materials = ldm[ldm['product_id'] == product]['material_id'].unique()
@@ -154,6 +151,7 @@ datasets_tab.write(inv_demand)
 #####################
 
 kpi_tab.subheader("Receita")
+
 kpi_tab.line_chart(data.groupby('Data')['Total'].sum().reset_index().rename(columns={"Total":"Receita"}), x='Data', y='Receita')
 kpi_tab.line_chart(data.groupby(['Mês', 'Ano'])['Total'].sum().reset_index().rename(columns={"Total":"Receita"}), x='Mês', y='Receita', color='Ano')
 kpi_tab.line_chart(data.groupby(['Mês', 'Ano'])['Total'].sum().groupby(level='Ano').cumsum().reset_index().rename(columns={"Total":"Receita"}), x='Mês', y='Receita', color='Ano')
