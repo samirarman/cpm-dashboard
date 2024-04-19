@@ -23,6 +23,10 @@ def read_data(filename):
 cat = read_data("aux_data/cat.csv")
 data = read_data("data/sales.csv")
 forecast = read_data("data/forecast.csv")
+forecast["ds"] = pd.to_datetime(forecast["ds"])
+forecast["month"] = forecast["ds"].dt.strftime("%m-%Y")
+monthly_forecast = forecast.groupby("month")['yhat'].sum().reset_index()
+
 datasets_tab.subheader("Sales Data")
 datasets_tab.write(data)
 
@@ -163,6 +167,9 @@ kpi_tab.line_chart(data.groupby('Data')['Total'].sum().reset_index().rename(colu
 kpi_tab.line_chart(data.groupby(['Mês', 'Ano'])['Total'].sum().reset_index().rename(columns={"Total":"Receita"}), x='Mês', y='Receita', color='Ano')
 kpi_tab.line_chart(data.groupby(['Mês', 'Ano'])['Total'].sum().groupby(level='Ano').cumsum().reset_index().rename(columns={"Total":"Receita"}), x='Mês', y='Receita', color='Ano')
 kpi_tab.line_chart(data.groupby(['Ano', 'Semana'])['Total'].sum().reset_index().rename(columns={"Total":"Receita"}), x='Semana', y='Receita', color='Ano')
+
+kpi_tab.subheader("Previsão de receitas")
+kpi_tab.bar_chart(monthly_forecast, x="month", y="yhat")
 
 kpi_tab.subheader("Número de pedidos")
 kpi_tab.line_chart(data.groupby('Data')['Número venda'].nunique().reset_index().rename(columns={"Número venda":"Pedidos"}), x='Data', y='Pedidos')

@@ -21,6 +21,7 @@ def read_sales_data(filename):
     df.drop(df.tail(1).index, inplace = True)
     df.rename(columns={"Vl.Unit.":"Valor Unit", "Valor Total Produtos - Descontos": "Total"}, inplace=True)
     df["Data Venda"] = pd.to_datetime(df["Data Venda"],format='%d/%m/%Y %H:%M', dayfirst=True)
+    df.loc[df["Data Venda"] >= "2024-03-01", "Data Venda"] -= pd.Timedelta(hours=3)
     df["Data"] = pd.to_datetime(df["Data Venda"].dt.date)
     df["Hora"] = df["Data Venda"].dt.time
     df["Ano"] = df['Data Venda'].dt.strftime("%Y")
