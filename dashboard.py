@@ -3,6 +3,7 @@ import pandas as pd
 from glob import glob
 import datetime as datetime
 import numpy as np
+import plotly.express as px
 
 
 ##########
@@ -22,6 +23,8 @@ def read_data(filename):
 
 cat = read_data("aux_data/cat.csv")
 data = read_data("data/sales.csv")
+data['Data'] = pd.to_datetime(data['Data'], format="ISO8601")
+data['Ano'] = data['Ano'].astype("string")
 forecast = read_data("data/forecast.csv")
 forecast["ds"] = pd.to_datetime(forecast["ds"])
 forecast["month"] = forecast["ds"].dt.strftime("%m-%Y")
@@ -163,10 +166,32 @@ kpi_tab.write(latest.reset_index(drop=True))
 
 kpi_tab.subheader("Receita")
 
-kpi_tab.line_chart(data.groupby('Data')['Total'].sum().reset_index().rename(columns={"Total":"Receita"}), x='Data', y='Receita')
-kpi_tab.line_chart(data.groupby(['Mês', 'Ano'])['Total'].sum().reset_index().rename(columns={"Total":"Receita"}), x='Mês', y='Receita', color='Ano')
-kpi_tab.line_chart(data.groupby(['Mês', 'Ano'])['Total'].sum().groupby(level='Ano').cumsum().reset_index().rename(columns={"Total":"Receita"}), x='Mês', y='Receita', color='Ano')
-kpi_tab.line_chart(data.groupby(['Ano', 'Semana'])['Total'].sum().reset_index().rename(columns={"Total":"Receita"}), x='Semana', y='Receita', color='Ano')
+kpi_tab.plotly_chart(
+    px.scatter(
+        data.groupby('Data')['Total']
+        .sum()
+        .reset_index()
+        .rename(columns={"Total":"Receita"}), 
+        x='Data', 
+        y='Receita',
+        trendline='rolling',
+        trendline_color_override="black",
+        trendline_options=dict(window=30))
+    .update_traces(mode = "lines"))
+
+kpi_tab.plotly_chart(
+    px.bar(
+        data.groupby(['Mês', 'Ano'])['Total']
+        .sum()
+        .reset_index()
+        .rename(columns={"Total":"Receita"}), 
+        x='Mês', 
+        y='Receita', 
+        color='Ano',
+        barmode='group'))
+
+kpi_tab.plotly_chart(px.bar(data.groupby(['Mês', 'Ano'])['Total'].sum().groupby(level='Ano').cumsum().reset_index().rename(columns={"Total":"Receita"}), x='Mês', y='Receita', color='Ano', barmode='group'))
+kpi_tab.plotly_chart(px.bar(data.groupby(['Ano', 'Semana'])['Total'].sum().reset_index().rename(columns={"Total":"Receita"}), x='Semana', y='Receita', color='Ano', barmode='group'))
 
 kpi_tab.subheader("Previsão de receitas")
 kpi_tab.bar_chart(monthly_forecast, x="month", y="yhat")
@@ -176,7 +201,6 @@ kpi_tab.line_chart(data.groupby('Data')['Número venda'].nunique().reset_index()
 kpi_tab.line_chart(data.groupby(['Mês', 'Ano'])['Número venda'].nunique().reset_index().rename(columns={"Número venda":"Pedidos"}), x='Mês', y='Pedidos', color='Ano')
 kpi_tab.line_chart(data.groupby(['Mês', 'Ano'])['Número venda'].nunique().groupby(level="Ano").cumsum().reset_index().rename(columns={"Número venda":"Pedidos"}), x='Mês', y='Pedidos', color='Ano')
 kpi_tab.line_chart(data.groupby(['Ano', 'Semana'])['Número venda'].nunique().reset_index().rename(columns={"Número venda":"Pedidos"}), x='Semana', y='Pedidos', color='Ano')
-# kpi_tab.line_chart(data.groupby(['Ano', 'Mês'])['Total'].sum().reset_index().rename(columns={"Total":"Receita"}), x='Mês', y='Receita', color='Ano')
 
 kpi_tab.subheader('Quantidade de produtos por pedido')
 kpi_tab.line_chart(share, y='Percentage', x='Ano Mês', color='Quantidade_x')
@@ -186,7 +210,7 @@ kpi_tab.line_chart(work_days,x = "Ano Mês", y="Receita média dias de semana")
 kpi_tab.line_chart(work_days,x = "Ano Mês", y="Receita média sábados")
 kpi_tab.line_chart(day_period, x = "Ano Mês", y = "Percentual", color = "Período")
 
-kpi_tab.subheader("Delivery analysis")
+kpi_tab.subheader("Margin analysis")
 # kpi_tab.line_chart(monthly_delivery_by_platform, x='Ano Mês', y='Total', color='Plataforma')
 # kpi_tab.line_chart(delivery_share.rename(columns={"Total":"Share"}), x="Ano Mês", y="Share", color="Plataforma")
 
@@ -197,7 +221,7 @@ filtered_frame = qty_sold[qty_sold['Ano Mês'] == sel_month].reset_index()
 if category_choice:
     print(filtered_frame)
     filtered_frame = filtered_frame.groupby('Categoria')['net_margin, Quantidade'].sum()
-kpi_tab.scatter_chart(filtered_frame, x= "Quantidade", y="net_margin", color="product")
+kpi_tab.plotly_chart(px.scatter(filtered_frame, x= "Quantidade", y="net_margin", color="product"))
 
 
 #####################
