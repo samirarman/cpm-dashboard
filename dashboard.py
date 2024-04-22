@@ -9,8 +9,6 @@ import plotly.express as px
 ##########
 # SETUP
 ##########
-# con = sqlite3.connect("/Users/Samir/Documents/py-proj/inventory-control/purchases.db")
-# cur = con.cursor()
 
 st.title('Cafeteria Patteo Mogilar')
 kpi_tab, cogs_tab, material_tab, datasets_tab, inventory_tab = st.tabs(["KPI", "Cost Data", "Material Data", "Datasets", "Estoque"])
@@ -66,18 +64,12 @@ ldm = read_data("aux_data/ldm.csv")#pd.read_sql_query("SELECT * FROM boms_view",
 datasets_tab.subheader("LDM")
 datasets_tab.write(ldm)
 
-# purchases = pd.read_sql_query("SELECT * FROM excel_exporter", con, parse_dates=True)
 purchases = read_data("aux_data/purchases.csv")
-# purchases = purchases.iloc[:,[0,2,11,12,13,14,15,16,17,19,]].set_axis(['date', 'material', 'price', 'disc', 'freight', 'icms_st', 'difal', 'ipi', 'total', 'qty'], axis=1)
-# purchases['unit_price'] = purchases['price']/purchases['qty']
-# purchases['unit_cost'] = purchases['total']/purchases['qty']
-# purchases['surcharge'] = purchases['total']/purchases['price'] - 1
-# purchases['date'] = pd.to_datetime(purchases['date'])
-# purchases['year_month'] = purchases['date'].dt.strftime('%Y-%m')
 
 datasets_tab.subheader("Purchases")
 datasets_tab.write(purchases)
 
+#TODO: Move to another file for preprocessing
 avg_cost = purchases.groupby(['year_month','material'])[['total', 'qty']].sum().reset_index()
 avg_cost['avg_cost'] = avg_cost['total']/avg_cost['qty']
 materials = ldm['material_id'].unique()
@@ -91,9 +83,7 @@ avg_cost = pd.concat([fill_avg_costs(material) for material in materials])
 datasets_tab.subheader("Average cost")
 datasets_tab.write(avg_cost)
 
-
-    
-
+#TODO: Get rid of qty_sold dataframe
 products = data['Produto'].unique()
 qty_sold = data.groupby(["Ano Mês", "Produto"])[['Total', 'Quantidade']].sum().reset_index()
 datasets_tab.subheader('Product qty and revenue overview')
@@ -219,25 +209,90 @@ kpi_tab.plotly_chart(
     use_container_width=True)
 
 kpi_tab.subheader("Previsão de receitas")
-# kpi_tab.bar_chart(monthly_forecast, x="month", y="yhat")
+kpi_tab.plotly_chart(
+    px.bar(monthly_forecast, 
+           x="month", 
+           y="yhat"))
 
 kpi_tab.subheader("Número de pedidos")
-# kpi_tab.line_chart(data.groupby('Data')['Número venda'].nunique().reset_index().rename(columns={"Número venda":"Pedidos"}), x='Data', y='Pedidos')
-# kpi_tab.line_chart(data.groupby(['Mês', 'Ano'])['Número venda'].nunique().reset_index().rename(columns={"Número venda":"Pedidos"}), x='Mês', y='Pedidos', color='Ano')
-# kpi_tab.line_chart(data.groupby(['Mês', 'Ano'])['Número venda'].nunique().groupby(level="Ano").cumsum().reset_index().rename(columns={"Número venda":"Pedidos"}), x='Mês', y='Pedidos', color='Ano')
-# kpi_tab.line_chart(data.groupby(['Ano', 'Semana'])['Número venda'].nunique().reset_index().rename(columns={"Número venda":"Pedidos"}), x='Semana', y='Pedidos', color='Ano')
+kpi_tab.plotly_chart(
+    px.scatter(
+        data.groupby('Data')['Número venda']
+        .nunique()
+        .reset_index()
+        .rename(columns={"Número venda":"Pedidos"}), 
+        x='Data', 
+        y='Pedidos',
+        trendline='rolling',
+        trendline_color_override="black",
+        trendline_options=dict(window=30))
+    .update_traces(mode = "lines"))
+
+kpi_tab.plotly_chart(
+    px.bar(
+        data.groupby(['Mês', 'Ano'])['Número venda']
+        .nunique()
+        .reset_index()
+        .rename(columns={"Número venda":"Pedidos"}), 
+        x='Mês', 
+        y='Pedidos', 
+        color='Ano',
+        barmode="group"))
+
+kpi_tab.plotly_chart(
+    px.bar(
+        data.groupby(['Mês', 'Ano'])['Número venda']
+        .nunique()
+        .groupby(level="Ano")
+        .cumsum()
+        .reset_index()
+        .rename(columns={"Número venda":"Pedidos"}), 
+        x='Mês', 
+        y='Pedidos', 
+        color='Ano',
+        barmode="group"))
+
+kpi_tab.plotly_chart(
+    px.bar(
+        data.groupby(['Ano', 'Semana'])['Número venda']
+        .nunique()
+        .reset_index()
+        .rename(columns={"Número venda":"Pedidos"}), 
+        x='Semana', 
+        y='Pedidos', 
+        color='Ano',
+        barmode="group"))
 
 kpi_tab.subheader('Quantidade de produtos por pedido')
-# kpi_tab.line_chart(share, y='Percentage', x='Ano Mês', color='Quantidade_x')
+kpi_tab.plotly_chart(
+    px.line(
+        share, 
+        y='Percentage', 
+        x='Ano Mês', 
+        color='Quantidade_x'))
 
 kpi_tab.subheader("Average revenue on weekday types")
-# kpi_tab.line_chart(work_days,x = "Ano Mês", y="Receita média dias de semana")
-# kpi_tab.line_chart(work_days,x = "Ano Mês", y="Receita média sábados")
-# kpi_tab.line_chart(day_period, x = "Ano Mês", y = "Percentual", color = "Período")
+
+kpi_tab.plotly_chart(
+    px.line(
+        work_days, 
+        x = "Ano Mês", 
+        y="Receita média dias de semana"))
+
+kpi_tab.plotly_chart(
+    px.line(
+        work_days, 
+        x = "Ano Mês", 
+        y="Receita média sábados"))
+
+kpi_tab.plotly_chart(
+    px.line(
+        day_period, 
+        x = "Ano Mês", 
+        y = "Percentual", 
+        color = "Período"))
 
 kpi_tab.subheader("Margin analysis")
-# kpi_tab.line_chart(monthly_delivery_by_platform, x='Ano Mês', y='Total', color='Plataforma')
-# kpi_tab.line_chart(delivery_share.rename(columns={"Total":"Share"}), x="Ano Mês", y="Share", color="Plataforma")
 
 month_choices = pd.Series(data['Ano Mês'].unique()).sort_values()
 sel_month = kpi_tab.selectbox("Selecione um mês:", month_choices, index=len(month_choices) - 1)
