@@ -129,6 +129,7 @@ datasets_tab.write(product_cost)
 datasets_tab.subheader("TESTE TESTE")
 data = data.merge(product_cost, left_on=['Ano Mês', 'Produto'], right_on=['year_month', 'product'], how='left')
 data['nominal_cost'] = data['Quantidade'] * data['material_cost']
+data['net_margin'] = data['Total'] - data['material_cost']
 datasets_tab.write(data)
 
 qty_sold = qty_sold.merge(product_cost, left_on=['Ano Mês', 'Produto'], right_on=['year_month', 'product'], how='left')
@@ -214,14 +215,20 @@ kpi_tab.subheader("Margin analysis")
 # kpi_tab.line_chart(monthly_delivery_by_platform, x='Ano Mês', y='Total', color='Plataforma')
 # kpi_tab.line_chart(delivery_share.rename(columns={"Total":"Share"}), x="Ano Mês", y="Share", color="Plataforma")
 
-month_choices = pd.Series(qty_sold['Ano Mês'].unique()).sort_values()
+month_choices = pd.Series(data['Ano Mês'].unique()).sort_values()
 sel_month = kpi_tab.selectbox("Selecione um mês:", month_choices, index=len(month_choices) - 1)
 category_choice = kpi_tab.checkbox("Por Categoria?")
-filtered_frame = qty_sold[qty_sold['Ano Mês'] == sel_month].reset_index()
+filtered_frame =data[data['Ano Mês'] == sel_month].reset_index() 
 if category_choice:
-    print(filtered_frame)
-    filtered_frame = filtered_frame.groupby('Categoria')['net_margin, Quantidade'].sum()
-kpi_tab.plotly_chart(px.scatter(filtered_frame, x= "Quantidade", y="net_margin", color="product"))
+	filtered_frame = filtered_frame.groupby(['Ano Mês', 'Categoria'])[['net_margin', 'Quantidade']].sum().reset_index()
+	kpi_tab.plotly_chart(px.scatter(filtered_frame, x= "Quantidade", y="net_margin", color="Categoria"))
+else:
+	filtered_frame = filtered_frame.groupby(['Ano Mês', 'Produto'])[['Quantidade', 'net_margin']].sum().reset_index()
+	kpi_tab.plotly_chart(px.scatter(filtered_frame, x= "Quantidade", y="net_margin", color="Produto"))
+
+kpi_tab.plotly_chart(px.line(data.groupby(['Ano Mês', 'Categoria'])['net_margin'].sum().reset_index(), x='Ano Mês', y='net_margin', color='Categoria'))
+
+
 
 
 #####################
@@ -233,7 +240,6 @@ sel_prod = cogs_tab.selectbox("Selecione um produto:", pd.Series(data['Produto']
 cogs_tab.subheader(sel_prod)
 filtered_product = qty_sold[qty_sold['Produto'] == sel_prod]
 filtered_material = material_usage[material_usage['product'] == sel_prod]
-print(filtered_material['material_cost'])
 filtered_ldm = ldm[ldm['product_id'] == sel_prod]
 
 cogs_tab.line_chart(filtered_product, x= 'Ano Mês', y='Total')
