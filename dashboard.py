@@ -189,7 +189,8 @@ kpi_tab.plotly_chart(
         x='Mês', 
         y='Receita', 
         color='Ano',
-        barmode='group'))
+        barmode='group'),
+    use_container_width=True)
 
 kpi_tab.plotly_chart(px.bar(data.groupby(['Mês', 'Ano'])['Total'].sum().groupby(level='Ano').cumsum().reset_index().rename(columns={"Total":"Receita"}), x='Mês', y='Receita', color='Ano', barmode='group'))
 kpi_tab.plotly_chart(px.bar(data.groupby(['Ano', 'Semana'])['Total'].sum().reset_index().rename(columns={"Total":"Receita"}), x='Semana', y='Receita', color='Ano', barmode='group'))
