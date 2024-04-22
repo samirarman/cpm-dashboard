@@ -219,21 +219,21 @@ kpi_tab.plotly_chart(
     use_container_width=True)
 
 kpi_tab.subheader("Previsão de receitas")
-kpi_tab.bar_chart(monthly_forecast, x="month", y="yhat")
+# kpi_tab.bar_chart(monthly_forecast, x="month", y="yhat")
 
 kpi_tab.subheader("Número de pedidos")
-kpi_tab.line_chart(data.groupby('Data')['Número venda'].nunique().reset_index().rename(columns={"Número venda":"Pedidos"}), x='Data', y='Pedidos')
-kpi_tab.line_chart(data.groupby(['Mês', 'Ano'])['Número venda'].nunique().reset_index().rename(columns={"Número venda":"Pedidos"}), x='Mês', y='Pedidos', color='Ano')
-kpi_tab.line_chart(data.groupby(['Mês', 'Ano'])['Número venda'].nunique().groupby(level="Ano").cumsum().reset_index().rename(columns={"Número venda":"Pedidos"}), x='Mês', y='Pedidos', color='Ano')
-kpi_tab.line_chart(data.groupby(['Ano', 'Semana'])['Número venda'].nunique().reset_index().rename(columns={"Número venda":"Pedidos"}), x='Semana', y='Pedidos', color='Ano')
+# kpi_tab.line_chart(data.groupby('Data')['Número venda'].nunique().reset_index().rename(columns={"Número venda":"Pedidos"}), x='Data', y='Pedidos')
+# kpi_tab.line_chart(data.groupby(['Mês', 'Ano'])['Número venda'].nunique().reset_index().rename(columns={"Número venda":"Pedidos"}), x='Mês', y='Pedidos', color='Ano')
+# kpi_tab.line_chart(data.groupby(['Mês', 'Ano'])['Número venda'].nunique().groupby(level="Ano").cumsum().reset_index().rename(columns={"Número venda":"Pedidos"}), x='Mês', y='Pedidos', color='Ano')
+# kpi_tab.line_chart(data.groupby(['Ano', 'Semana'])['Número venda'].nunique().reset_index().rename(columns={"Número venda":"Pedidos"}), x='Semana', y='Pedidos', color='Ano')
 
 kpi_tab.subheader('Quantidade de produtos por pedido')
-kpi_tab.line_chart(share, y='Percentage', x='Ano Mês', color='Quantidade_x')
+# kpi_tab.line_chart(share, y='Percentage', x='Ano Mês', color='Quantidade_x')
 
 kpi_tab.subheader("Average revenue on weekday types")
-kpi_tab.line_chart(work_days,x = "Ano Mês", y="Receita média dias de semana")
-kpi_tab.line_chart(work_days,x = "Ano Mês", y="Receita média sábados")
-kpi_tab.line_chart(day_period, x = "Ano Mês", y = "Percentual", color = "Período")
+# kpi_tab.line_chart(work_days,x = "Ano Mês", y="Receita média dias de semana")
+# kpi_tab.line_chart(work_days,x = "Ano Mês", y="Receita média sábados")
+# kpi_tab.line_chart(day_period, x = "Ano Mês", y = "Percentual", color = "Período")
 
 kpi_tab.subheader("Margin analysis")
 # kpi_tab.line_chart(monthly_delivery_by_platform, x='Ano Mês', y='Total', color='Plataforma')
