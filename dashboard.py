@@ -33,6 +33,7 @@ datasets_tab.write(data)
 
 montly_revenue = data.groupby(['Ano Mês'])['Total'].sum().reset_index()
 
+
 datasets_tab.subheader("Got no idea what this is")
 datasets_tab.write(data.groupby('Ano Mês')['Total'].count().reset_index())
 
@@ -121,6 +122,11 @@ data = data.merge(product_cost, left_on=['Ano Mês', 'Produto'], right_on=['year
 data['nominal_cost'] = data['Quantidade'] * data['material_cost']
 data['net_margin'] = data['Total'] - data['material_cost']
 datasets_tab.write(data)
+
+daily_stats = data.groupby('Data')[['Total', 'net_margin']].sum().reset_index()
+daily_stats = daily_stats.merge(data.groupby('Data')[['Número venda']].nunique().reset_index(), how='left', on='Data')
+daily_stats['Ticket médio'] = daily_stats['Total'] / daily_stats['Número venda']
+
 
 qty_sold = qty_sold.merge(product_cost, left_on=['Ano Mês', 'Produto'], right_on=['year_month', 'product'], how='left')
 qty_sold['avg_price'] = qty_sold['Total'] / qty_sold['Quantidade']
@@ -213,6 +219,18 @@ kpi_tab.plotly_chart(
     px.bar(monthly_forecast, 
            x="month", 
            y="yhat"))
+
+
+kpi_tab.subheader("Ticket médio")
+kpi_tab.plotly_chart(
+    px.scatter(
+        daily_stats,
+        x='Data',
+        y='Ticket médio',
+        trendline='rolling',
+        trendline_color_override="black",
+        trendline_options=dict(window=30))
+    .update_traces(mode = 'lines'))
 
 kpi_tab.subheader("Número de pedidos")
 kpi_tab.plotly_chart(
