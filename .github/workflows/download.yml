@@ -1,10 +1,6 @@
 name: Data maker
 
 on:
-  push:
-    branches:
-      - main
-
   workflow_dispatch:
 
   schedule:
