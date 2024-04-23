@@ -185,8 +185,7 @@ kpi_tab.plotly_chart(
         x='Mês', 
         y='Receita', 
         color='Ano',
-        barmode='group'),
-    use_container_width=True)
+        barmode='group'))
 
 kpi_tab.plotly_chart(
     px.bar(
@@ -199,8 +198,7 @@ kpi_tab.plotly_chart(
         x='Mês', 
         y='Receita', 
         color='Ano', 
-        barmode='group'),
-    use_container_width=True)
+        barmode='group'))
 
 kpi_tab.plotly_chart(
     px.bar(
@@ -211,8 +209,7 @@ kpi_tab.plotly_chart(
         x='Semana', 
         y='Receita', 
         color='Ano', 
-        barmode='group'),
-    use_container_width=True)
+        barmode='group'))
 
 kpi_tab.subheader("Previsão de receitas")
 kpi_tab.plotly_chart(
@@ -289,7 +286,7 @@ kpi_tab.plotly_chart(
         x='Ano Mês', 
         color='Quantidade_x'))
 
-kpi_tab.subheader("Average revenue on weekday types")
+kpi_tab.subheader("Receita média nos dias da semana")
 
 kpi_tab.plotly_chart(
     px.line(
