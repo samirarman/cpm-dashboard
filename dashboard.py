@@ -27,7 +27,7 @@ forecast = read_data("data/forecast.csv")
 forecast["ds"] = pd.to_datetime(forecast["ds"])
 forecast["month"] = forecast["ds"].dt.strftime("%m-%Y")
 forecast['year'] = forecast['ds'].dt.strftime("%Y")
-monthly_forecast = forecast[forecast['month'] >= datetime.datetime.today().strftime("%m-%Y")].groupby(['month'])['yhat'].sum().reset_index()
+monthly_forecast = forecast[forecast['year'] == datetime.datetime.today().strftime("%Y")].groupby(['month'])['yhat'].sum().reset_index()
 
 datasets_tab.subheader("Sales Data")
 datasets_tab.write(data)
