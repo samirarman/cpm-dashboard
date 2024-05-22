@@ -23,6 +23,8 @@ cat = read_data("aux_data/cat.csv")
 data = read_data("data/sales.csv")
 data['Data'] = pd.to_datetime(data['Data'], format="ISO8601")
 data['Ano'] = data['Ano'].astype("string")
+data['Trim'] = data['Data'].dt.quarter
+data['Ano Trim'] = data['Data'].dt.to_period('Q').astype(str).str.replace('Q', '-Q')
 forecast = read_data("data/forecast.csv")
 forecast["ds"] = pd.to_datetime(forecast["ds"])
 forecast["month"] = forecast["ds"].dt.strftime("%m-%Y")
@@ -162,6 +164,7 @@ latest.rename(columns={'Número venda':'Quantidade'}, inplace=True)
 latest['Ticket-Médio'] = latest['Total'] / latest['Quantidade']
 kpi_tab.write(latest.reset_index(drop=True))
 
+
 kpi_tab.subheader("Receita")
 
 kpi_tab.plotly_chart(
@@ -211,6 +214,28 @@ kpi_tab.plotly_chart(
         y='Receita', 
         color='Ano', 
         barmode='group'))
+
+kpi_tab.plotly_chart(
+    px.line(
+        data.groupby(['Ano Trim', 'Categoria'])['Total']
+        .sum()
+        .reset_index(),
+        x='Ano Trim',
+        y='Total',
+        color='Categoria'
+    )
+)
+
+kpi_tab.plotly_chart(
+    px.line(
+        data.groupby(['Ano Trim', 'Produto'])['Total']
+        .sum()
+        .reset_index(),
+        x='Ano Trim',
+        y='Total',
+        color='Produto'
+    )
+)
 
 kpi_tab.subheader("Previsão de receitas")
 kpi_tab.plotly_chart(
