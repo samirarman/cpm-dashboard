@@ -157,7 +157,8 @@ datasets_tab.write(inv_demand)
 #####################
 # KPI TAB
 #####################
-kpi_tab.subheader("Latest results")
+kpi_tab.header("KPI")
+kpi_tab.subheader("Último resultado")
 
 latest = data.groupby('Data')['Total'].sum().tail(1).reset_index().merge(data.groupby('Data')['Número venda'].nunique().tail(1).reset_index(), on='Data')
 latest.rename(columns={'Número venda':'Quantidade'}, inplace=True)
@@ -165,7 +166,7 @@ latest['Ticket-Médio'] = latest['Total'] / latest['Quantidade']
 kpi_tab.write(latest.reset_index(drop=True))
 
 
-kpi_tab.subheader("Receita")
+kpi_tab.subheader ("Faturamento bruto diário")
 
 kpi_tab.plotly_chart(
     px.scatter(
@@ -180,6 +181,7 @@ kpi_tab.plotly_chart(
         trendline_options=dict(window=30))
     .update_traces(mode = "lines"))
 
+kpi_tab.subheader("Receita mensal comparada")
 kpi_tab.plotly_chart(
     px.bar(
         data.groupby(['Mês', 'Ano'])['Total']
@@ -191,6 +193,7 @@ kpi_tab.plotly_chart(
         color='Ano',
         barmode='group'))
 
+kpi_tab.subheader("Receita acumulada comparada")
 kpi_tab.plotly_chart(
     px.bar(
         data.groupby(['Mês', 'Ano'])['Total']
@@ -204,6 +207,7 @@ kpi_tab.plotly_chart(
         color='Ano', 
         barmode='group'))
 
+kpi_tab.subheader("Receita semanal comparada")
 kpi_tab.plotly_chart(
     px.bar(
         data.groupby(['Ano', 'Semana'])['Total']
@@ -215,12 +219,13 @@ kpi_tab.plotly_chart(
         color='Ano', 
         barmode='group'))
 
+kpi_tab.subheader("Receita mensal por categoria de produto")
 kpi_tab.plotly_chart(
     px.line(
-        data.groupby(['Ano Trim', 'Categoria'])['Total']
+        data.groupby(['Ano Mês', 'Categoria'])['Total']
         .sum()
         .reset_index(),
-        x='Ano Trim',
+        x='Ano Mês',
         y='Total',
         color='Categoria'
     )
@@ -228,10 +233,10 @@ kpi_tab.plotly_chart(
 
 kpi_tab.plotly_chart(
     px.line(
-        data.groupby(['Ano Trim', 'Produto'])['Total']
+        data.groupby(['Ano Mês', 'Produto'])['Total']
         .sum()
         .reset_index(),
-        x='Ano Trim',
+        x='Ano Mês',
         y='Total',
         color='Produto'
     )
