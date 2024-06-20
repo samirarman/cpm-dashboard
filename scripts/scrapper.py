@@ -226,17 +226,17 @@ def main():
         download_report(driver)
         act_wait()
 
-        print("Accessing inventory report")
-        navigate_to_inventory_report(driver)
-        act_wait()
+        #print("Accessing inventory report")
+        #navigate_to_inventory_report(driver)
+        #act_wait()
 
-        print("Setting-up inventory report options")
-        setup_inventory_report(driver)
-        act_wait()
+        #print("Setting-up inventory report options")
+        #setup_inventory_report(driver)
+        #act_wait()
 
-        print("Downloading inventory report")
-        download_report(driver)
-        act_wait()
+        #print("Downloading inventory report")
+        #download_report(driver)
+        #act_wait()
 
 if __name__ == "__main__":
     main()
