@@ -51,7 +51,7 @@ jobs:
     - name: Rename files
       run: |
        mv Relatorio_venda.xls Relatorio_$(date '+%Y_%m').xls
-       mv Relatorio_Estoque.xls Relatorio_Estoque_$(date '+%Y%m').xls
+       # mv Relatorio_Estoque.xls Relatorio_Estoque_$(date '+%Y%m').xls
        ls -a -l
 
     - name: Create artifact
