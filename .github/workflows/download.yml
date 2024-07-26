@@ -3,8 +3,8 @@ name: Data maker
 on:
   workflow_dispatch:
 
-  schedule:
-    - cron: '30 22 * * *'
+#  schedule:
+#    - cron: '30 22 * * *'
   
 jobs:
   scrape:
